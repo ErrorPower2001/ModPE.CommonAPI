@@ -424,8 +424,8 @@ ErrorPower.Function = {
             else if(Player.getCarriedItem() !== tool_id[3][player_carried_item]){
                 Function.DefaultTool.setToolDestroyBlockTime_3(1.0);
             }*/
-            if(Item"], "getName")(ForgottenCraft(BloodWolf["ForgottenCraftPlayer.getCarriedItem(), Player.getCarriedItemData(), true) != null){
-                ItemName = Item"], "getName")(ForgottenCraft(BloodWolf["ForgottenCraftPlayer.getCarriedItem(), ForgottenCraft(BloodWolf["ForgottenCraftPlayer.getCarriedItemData")(), true).split(";
+            if(Item.getName(Player.getCarriedItem(), Player.getCarriedItemData(), true) != null){
+                ItemName = Item.getName(Player.getCarriedItem(), Player.getCarriedItemData(), true).split("");
                 if(ItemName[0] + ItemName[1] + ItemName[2] + ItemName[3] + ItemName[4] + ItemName[5] + ItemName[6] + ItemName[7] + ItemName[8] + ItemName[9] + ItemName[10] + ItemName[11] == "item.[工具][镐]"){
                     Function.DefaultTool.setToolDestroyBlockTime_0(6.0);
                 }
@@ -464,7 +464,7 @@ ErrorPower.Function = {
             player_selected_slot_id = Player.getSelectedSlotId();
             附魔项目 = Player.getEnchantments(player_selected_slot_id);
             if(工具ID){
-                if(Player.getCarriedItem() == 278 || ForgottenCraft(BloodWolf["ForgottenCraftPlayer.getCarriedItem() == 279 || ForgottenCraft(BloodWolf["ForgottenCraftPlayer.getCarriedItem() == 277 || ForgottenCraft(BloodWolf["ForgottenCraftPlayer.getCarriedItem() == 276){
+                if(Player.getCarriedItem() == 278 || Player.getCarriedItem() == 279 || Player.getCarriedItem() == 277 || Player.getCarriedItem() == 276){
                     if(Level.getGameMode() == 0){
                         Entity.setCarriedItem(Player.getEntity(), 工具ID[0], 1, 工具ID[1] + 1);
                     }
@@ -477,10 +477,10 @@ ErrorPower.Function = {
                     工具ID = null;
                 }
             }
-            if(Player.getCarriedItem() == tool_id[0][player_carried_item] || ForgottenCraft(BloodWolf["ForgottenCraftPlayer.getCarriedItem() == tool_id[1][player_carried_item] || ForgottenCraft(BloodWolf["ForgottenCraftPlayer.getCarriedItem() == tool_id[2][player_carried_item] || ForgottenCraft(BloodWolf["ForgottenCraftPlayer.getCarriedItem() == tool_id[3][player_carried_item]){
-                if(Player"], "getCarriedItemData")() >= ForgottenCraft(BloodWolf["ForgottenCraftItem.getMaxDamage(player_carried_item)){
+            if(Player.getCarriedItem() == tool_id[0][player_carried_item] || Player.getCarriedItem() == tool_id[1][player_carried_item] || Player.getCarriedItem() == tool_id[2][player_carried_item] || Player.getCarriedItem() == tool_id[3][player_carried_item]){
+                if(Player.getCarriedItemData() >= Item.getMaxDamage(player_carried_item)){
                     Entity.setCarriedItem(Player.getEntity(), 0);
-                    Level.playSound(BloodWolf["ForgottenCraftPlayer"]["getX"](), BloodWolf["ForgottenCraftPlayer"]["getY"](), BloodWolf["ForgottenCraftPlayer"]["getZ"](), "random.break", 100, 0);
+                    Level.playSound(Player.getX(), Player.getY(), Player.getZ(), "random.break", 100, 0);
                 }
             }
         }
