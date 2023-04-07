@@ -71,55 +71,55 @@ BlockType.Lava = "Lava";
 
 
 
-ErrorPower.Item.setItem = function(id_and_name, texture_and_sorting, item_type_and_sorting, item_damage){
+ErrorPower.Item.setItem = function(id_and_name, texture_and_sorting, type_and_sorting, item_damage){
     item_name_id[id_and_name[0]] = id_and_name[1];
     item_name_id[id_and_name[1]] = id_and_name[0];
 
-    if(item_type_and_sorting[0] == "Item"){
-        if(item_type_and_sorting[1] == 0){
+    if(type_and_sorting[0] == "Item"){
+        if(type_and_sorting[1] == 0){
             ModPE.setItem(id_and_name[0], texture_and_sorting[0], texture_and_sorting[1], "[物品]" + " " + id_and_name[1], 64);
             Item.setCategory(id_and_name[0], 2, 0);
             Player.addItemCreativeInv(id_and_name[0], 64, 0);
         }
-        if(item_type_and_sorting[1] == 1){
+        if(type_and_sorting[1] == 1){
             ModPE.setItem(id_and_name[0], texture_and_sorting[0], texture_and_sorting[1], "[物品]" + " " + id_and_name[1], 16);
             Item.setCategory(id_and_name[0], 2, 0);
             Player.addItemCreativeInv(id_and_name[0], 16, 0);
         }
-        if(item_type_and_sorting[1] == 2){
+        if(type_and_sorting[1] == 2){
             ModPE.setItem(id_and_name[0], texture_and_sorting[0], texture_and_sorting[1], "[物品]" + " " + id_and_name[1], 64);
             Item.setCategory(id_and_name[0], 4, 0);
             Player.addItemCreativeInv(id_and_name[0], 64, 0);
         }
-        if(item_type_and_sorting[1] == 3){
+        if(type_and_sorting[1] == 3){
             ModPE.setItem(id_and_name[0], texture_and_sorting[0], texture_and_sorting[1], "[物品]" + " " + id_and_name[1], 16);
             Item.setCategory(id_and_name[0], 4, 0);
             Player.addItemCreativeInv(id_and_name[0], 16, 0);
         }
         Item.setHandEquipped(id_and_name[0], false);
     }
-    if(item_type_and_sorting[0] == "Tool"){
-        if(item_type_and_sorting[1] == 0){
+    if(type_and_sorting[0] == "Tool"){
+        if(type_and_sorting[1] == 0){
             ModPE.setItem(id_and_name[0], texture_and_sorting[0], texture_and_sorting[1], "[工具][镐]" + " " + id_and_name[1], 1);
             Item.setEnchantType(id_and_name[0], 附魔类型_镐子, 1);
             tool_id[0][id_and_name[0]] = id_and_name[0];
         }
-        if(item_type_and_sorting[1] == 1){
+        if(type_and_sorting[1] == 1){
             ModPE.setItem(id_and_name[0], texture_and_sorting[0], texture_and_sorting[1], "[工具][斧]" + " " + id_and_name[1], 1);
             Item.setEnchantType(id_and_name[0], 附魔类型_斧子, 1);
             tool_id[1][id_and_name[0]] = id_and_name[0];
         }
-        if(item_type_and_sorting[1] == 2){
+        if(type_and_sorting[1] == 2){
             ModPE.setItem(id_and_name[0], texture_and_sorting[0], texture_and_sorting[1], "[工具][铲]" + " " + id_and_name[1], 1);
             Item.setEnchantType(id_and_name[0], 附魔类型_铲子, 1);
             tool_id[2][id_and_name[0]] = id_and_name[0];
         }
-        if(item_type_and_sorting[1] == 3){
+        if(type_and_sorting[1] == 3){
             ModPE.setItem(id_and_name[0], texture_and_sorting[0], texture_and_sorting[1], "[工具][剑]" + " " + id_and_name[1], 1);
             Item.setEnchantType(id_and_name[0], 附魔类型_武器, 1);
             tool_id[3][id_and_name[0]] = id_and_name[0];
         }
-        if(item_type_and_sorting[1] == 4){
+        if(type_and_sorting[1] == 4){
             ModPE.setItem(id_and_name[0], texture_and_sorting[0], texture_and_sorting[1], id_and_name[1], 1);
         }
         Item.setHandEquipped(id_and_name[0], true);
