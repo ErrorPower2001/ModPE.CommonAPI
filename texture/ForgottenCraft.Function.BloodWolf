@@ -275,7 +275,7 @@ BloodWolf[_ForgottenCraft0Function_]["setToolDestroyBlockTime_3"] = function(_Fo
  ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(30 , 20/_Forgotten1Craft_);
 }
 
-BloodWolf[_ForgottenCraft0Function_]["MineBeProduced"]1 = function(ID , 特殊值 , 数量 , 高度 , 替换方块){
+BloodWolf[_ForgottenCraft0Function_]["MineBeProduced1"] = function(ID , 特殊值 , 数量 , 高度 , 替换方块){
  生成 = 0;生成 ++;
  几率 = Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]())// + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]());
  x = getPlayerX() + Math["random"]() * 256
@@ -333,7 +333,7 @@ BloodWolf[_ForgottenCraft0Function_]["MineBeProduced"]1 = function(ID , 特殊�
   else if(生成 > 数量){生成 = 0}
  }
 }
-BloodWolf[_ForgottenCraft0Function_]["MineBeProduced"]2 = function(ID , 特殊值 , 数量 , 高度 , 替换方块){
+BloodWolf[_ForgottenCraft0Function_]["MineBeProduced2"] = function(ID , 特殊值 , 数量 , 高度 , 替换方块){
  生成 = 0;生成 ++;
  几率 = Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]())// + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]());
  x = getPlayerX() + Math["random"]() * 256
@@ -391,7 +391,7 @@ BloodWolf[_ForgottenCraft0Function_]["MineBeProduced"]2 = function(ID , 特殊�
   else if(生成 > 数量){生成 = 0}
  }
 }
-BloodWolf[_ForgottenCraft0Function_]["MineBeProduced"]3 = function(ID , 特殊值 , 数量 , 高度 , 替换方块){
+BloodWolf[_ForgottenCraft0Function_]["MineBeProduced3"] = function(ID , 特殊值 , 数量 , 高度 , 替换方块){
  生成 = 0;生成 ++;
  几率 = Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]())// + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]());
  x = getPlayerX() - Math["random"]() * 256
@@ -449,7 +449,7 @@ BloodWolf[_ForgottenCraft0Function_]["MineBeProduced"]3 = function(ID , 特殊�
   else if(生成 > 数量){生成 = 0}
  }
 }
-BloodWolf[_ForgottenCraft0Function_]["MineBeProduced"]4 = function(ID , 特殊值 , 数量 , 高度 , 替换方块){
+BloodWolf[_ForgottenCraft0Function_]["MineBeProduced4"] = function(ID , 特殊值 , 数量 , 高度 , 替换方块){
  生成 = 0;生成 ++;
  几率 = Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]())// + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]());
  x = getPlayerX() - Math["random"]() * 256
@@ -509,10 +509,10 @@ BloodWolf[_ForgottenCraft0Function_]["MineBeProduced"]4 = function(ID , 特殊�
 }
 
 BloodWolf[_ForgottenCraft0Function_]["MineBeProduced"] = function(ID , 特殊值 , 数量 , 高度 , 替换方块){
- BloodWolf[_ForgottenCraft0Function_]["MineBeProduced"]1(ID , 特殊值 , 数量 , 高度 , 替换方块);
- BloodWolf[_ForgottenCraft0Function_]["MineBeProduced"]2(ID , 特殊值 , 数量 , 高度 , 替换方块);
- BloodWolf[_ForgottenCraft0Function_]["MineBeProduced"]3(ID , 特殊值 , 数量 , 高度 , 替换方块);
- BloodWolf[_ForgottenCraft0Function_]["MineBeProduced"]4(ID , 特殊值 , 数量 , 高度 , 替换方块);
+ BloodWolf[_ForgottenCraft0Function_]["MineBeProduced1"](ID , 特殊值 , 数量 , 高度 , 替换方块);
+ BloodWolf[_ForgottenCraft0Function_]["MineBeProduced2"](ID , 特殊值 , 数量 , 高度 , 替换方块);
+ BloodWolf[_ForgottenCraft0Function_]["MineBeProduced3"](ID , 特殊值 , 数量 , 高度 , 替换方块);
+ BloodWolf[_ForgottenCraft0Function_]["MineBeProduced4"](ID , 特殊值 , 数量 , 高度 , 替换方块);
 }
 
 BloodWolf[_ForgottenCraft0Function_]["saveData"] = function(_Forgotten0Craft_ , _Forgotten1Craft_){
