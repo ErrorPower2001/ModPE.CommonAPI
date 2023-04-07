@@ -1,92 +1,134 @@
 /*---------------------------------------------*/
 /*---------------------------------------------*/
-/*__尊重他人劳动成果，禁止抄袭__*/
+/* 尊重他人劳动成果 , 禁止抄袭 */
+/* Don't Copy , please */
 /*---------------------------------------------*/
 /*---------------------------------------------*/
-/*__如果你需要我的源码，可以找我要__*/
-/*__作者我的百度贴吧用户名:我的世界之血狼__*/
-/*__作者我的QQ:1366329192__*/
-/*__请注明来意,如:我想知道ModPE(加上ModPE名字)的源码__*/
+/* 作者我的百度贴吧用户名 : 我的世界之血狼 */
+/* 作者我的QQ : 1366329192 */
+/* Make by 我的世界之血狼 in Chinese Baidu Tieba */
+/* Maker's Gmail : pengchenxiang@gmail.com */
 /*---------------------------------------------*/
 /*---------------------------------------------*/
-/*__如果你能从我的源码这里改进了一些算法或者灵感或者其他什么的__*/
-/*__我会很为你高兴的__*/
-/*__但是请你在发布你自己的ModPE的时候注明作者__*/
-/*__谢谢__*/
+/* 如果你能从我的源码这里改进了一些算法或者灵感或者其他什么的 */
+/* 我会很为你高兴的 */
+/* 但是请你不要抄袭 */
+/* 谢谢 */
+/* I will be happy for you if you can get something here */
+/* But don't copy my ModPE */
+/* That all , thanks */
 /*---------------------------------------------*/
 /*---------------------------------------------*/
 
 /*Variable*/
-var ItemType_Item;// = 0;
-var ItemType_Tool;// = 1;
+var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 
 //define function
-RunTexturePackFile = function(_Forgotten0Craft_ , _Forgotten1Craft_){
- if(_Forgotten1Craft_ == 0){
-  eval(new java["lang"]["String"](ModPE["getBytesFromTexturePack"](_Forgotten0Craft_ + ".BloodWolf.X") , "UTF-8") + "");
- }
- if(_Forgotten1Craft_ == 1){
-  eval(new java["lang"]["String"](ModPE["getBytesFromTexturePack"](_Forgotten0Craft_ + ".BloodWolf") , "UTF-8") + "");
- }
+TexturePackFile = function(_Forgotten0Craft_){
+    eval(new java["lang"]["String"](ModPE["getBytesFromTexturePack"]("[ForgottenCraft]" + _Forgotten0Craft_ + ".BloodWolf") , "UTF-8") + "");
 }
-RunTexturePackFile("ForgottenCraft.Function" , 0);
-RunTexturePackFile("ForgottenCraft.Function" , 1);
+TexturePackFile("BloodWolf");
+MinecraftVersion = String(ForgottenCraft(BloodWolf["ForgottenCraftModPE"] , "getMinecraftVersion")()).split(".");
+if(MinecraftVersion[0] !== "1" || MinecraftVersion[1] !== "1"){
+    TexturePackFile("BloodWolf.ForgottenCraftFunction");
+}
+if(MinecraftVersion[0] == "1" && MinecraftVersion[1] == "1"){
+    TexturePackFile("BloodWolf.ForgottenCraftFunction_");
+}
+TexturePackFile("BloodWolfFunction");
+TexturePackFile("GUI");
 
-if(! ForgottenCraft(BloodWolf[_ForgottenCraft0Function_] , "readData")("/sdcard/games/com.mojang/[ModPE]ForgottenCraft/[ModPE][API]ForgottenCraft.JS" , "UTF-8")){
- ForgottenCraft(BloodWolf[_ForgottenCraft0Function_] , "saveData")("/sdcard/games/com.mojang/[ModPE]ForgottenCraft/[ModPE][API]ForgottenCraft.JS" , "\/*attackHook_ = function(attacker , victim){};*\/\n\n\/*chatHook_ = function(str){};*\/\n\n\/*continueDestroyBlock_ = function(x , y , z , side , progress){};*\/\n\n\/*destroyBlock_ = function(x , y , z , side){};*\/\n\n\/*projectileHitEntityHook_ = function(projectile , targetEntity){};*\/\n\n\/*eatHook_ = function(hearts , saturationRatio){};*\/\n\n\/*entityAddedHook_ = function(entity){};*\/\n\n\/*entityHurtHook_ = function(attacker , victim , halfhearts){};*\/\n\n\/*entityRemovedHook_ = function(entity){};*\/\n\n\/*explodeHook_ = function(entity , x , y , z , power , onFire){};*\/\n\n\/*serverMessageReceiveHook_ = function(str){};*\/\n\n\/*deathHook_ = function(attacker , victim){};*\/\n\n\/*playerAddExpHook_ = function(player , experienceAdded){};*\/\n\n\/*playerExpLevelChangeHook_ = function(player , levelsAdded){};*\/\n\n\/*redstoneUpdateHook_ = function(x , y , z , newCurrent , someBooleanIDontKnow , blockId , blockData){};*\/\n\n\/*newLevel_ = function(){};*\/\n\n\/*startDestroyBlock_ = function(x , y , z , side){};*\/\n\n\/*projectileHitBlockHook_ = function(projectile , blockX , blockY , blockZ , side){};*\/\n\n\/*modTick_ = function(){};*\/\n\n\/*useItem_ = function(x , y , z , itemid , blockid , side , itemDamage , blockDamage){};*\/\n\nBloodWolf[0][\"setItem\"](500 , [\"texture\" , 0] , \"...\" , [ItemType_Tool , 0] , 250);\nBloodWolf[0][\"setItem\"](501 , [\"texture\" , 1] , \"...\" , [ItemType_Tool , 1] , 250);\nBloodWolf[0][\"setItem\"](502 , [\"texture\" , 2] , \"...\" , [ItemType_Tool , 2] , 250);\nBloodWolf[0][\"setItem\"](503 , [\"texture\" , 3] , \"...\" , [ItemType_Tool , 3] , 250);");
+//BlockLauncher function
+/*can use preventDefault()*/
+attackHook = function(attacker , victim){
+    BloodWolf.ForgottenCraftFunction.DefaultTool.attackHook(attacker , victim);
 }
 
-//function
 /*can use preventDefault()*/
-//attackHook_BloodWolf = function(attacker , victim){}
-
-/*can use preventDefault()*/
-//chatHook_BloodWolf = function(str){}
+//chatHook = function(str){}
 
 /*can use preventDefault()*/
-//continueDestroyBlock_BloodWolf = function(x , y , z , side , progress){}
+continueDestroyBlock = function(x , y , z , side , progress){
+    BloodWolf.ForgottenCraftFunction.DefaultTool.continueDestroyBlock(x , y , z , side , progress);
+}
 
 /*can use preventDefault()*/
-//destroyBlock_BloodWolf = function(x , y , z , side){}
-
-//projectileHitEntityHook_BloodWolf = function(projectile , targetEntity){}
-
-//eatHook_BloodWolf = function(hearts , saturationRatio){}
-
-//entityAddedHook_BloodWolf = function(entity){}
+destroyBlock = function(x , y , z , side){
+    BloodWolf.ForgottenCraftFunction.DefaultTool.destroyBlock(x , y , z , side);
+}
 
 /*can use preventDefault()*/
-//entityHurtHook_BloodWolf = function(attacker , victim , halfhearts){}
+//leaveGame = function(){}
 
-//entityRemovedHook_BloodWolf = function(entity){}
+//projectileHitEntityHook = function(projectile , targetEntity){}
 
-/*can use preventDefault()*/
-//explodeHook_BloodWolf = function(entity , x , y , z , power , onFire){}
+//eatHook = function(hearts , saturationRatio){}
 
-/*can use preventDefault()*/
-//serverMessageReceiveHook_BloodWolf = function(str){}
+//entityAddedHook = function(entity){}
 
 /*can use preventDefault()*/
-//deathHook_BloodWolf = function(attacker , victim){}
+//entityHurtHook = function(attacker , victim , halfhearts){}
+
+//entityRemovedHook = function(entity){}
 
 /*can use preventDefault()*/
-//playerAddExpHook_BloodWolf = function(player , experienceAdded){}
+//explodeHook = function(entity , x , y , z , power , onFire){}
 
 /*can use preventDefault()*/
-//playerExpLevelChangeHook_BloodWolf = function(player , levelsAdded){}
-
-//redstoneUpdateHook_BloodWolf = function(x , y , z , newCurrent , someBooleanIDontKnow , blockId , blockData){}
-
-//newLevel_BloodWolf = function(){}
+//serverMessageReceiveHook = function(str){}
 
 /*can use preventDefault()*/
-//startDestroyBlock_BloodWolf = function(x , y , z , side){}
-
-//projectileHitBlockHook_BloodWolf = function(projectile , blockX , blockY , blockZ , side){}
-
-//modTick_BloodWolf = function(){}
+//deathHook = function(attacker , victim){}
 
 /*can use preventDefault()*/
-//useItem_BloodWolf = function(x , y , z , itemid , blockid , side , itemDamage , blockDamage){}
+//playerAddExpHook = function(player , experienceAdded){}
 
-eval(new ForgottenCraft(BloodWolf[_ForgottenCraft0Function_] , "readData")("/sdcard/games/com.mojang/[ModPE]ForgottenCraft/[ModPE][API]ForgottenCraft.JS" , "UTF-8"))
+/*can use preventDefault()*/
+//playerExpLevelChangeHook = function(player , levelsAdded){}
+
+//redstoneUpdateHook = function(x , y , z , newCurrent , someBooleanIDontKnow , blockId , blockData){}
+
+newLevel = function(){
+}
+
+/*can use preventDefault()*/
+startDestroyBlock = function(x , y , z , side){
+    BloodWolf.ForgottenCraftFunction.DefaultTool.startDestroyBlock(x , y , z , side);
+}
+
+//projectileHitBlockHook = function(projectile , blockX , blockY , blockZ , side){}
+
+modTick = function(){
+    BloodWolf.ForgottenCraftFunction.DefaultTool.modTick();
+    
+    /*ModPE["showTipMessage"](
+        "\n当前所指方块ID: " + Player["getPointedBlockId"]()
+        + "\n当前所指方块特殊值: " + Player["getPointedBlockData"]()
+        + "\n当前手持物品ID: " + Player["getCarriedItem"]()
+        + "\n当前手持物品特殊值: " + Player["getCarriedItemData"]()
+        + "\n当前所指生物类型ID: " + Entity["getEntityTypeId"](Player["getPointedEntity"]())
+        + "\n当前所指生物模型ID: " + Entity["getRenderType"](Player["getPointedEntity"]())
+        + "\n当前所指生物的皮肤路径: " + Entity["getMobSkin"](Player["getPointedEntity"]())
+        + "\n"
+ );
+    ModPE["showTipMessage"](
+        "\n当前玩家X轴: " + getPlayerX()
+        + "\n当前玩家Y轴: " + getPlayerY()
+        + "\n当前玩家Z轴: " + getPlayerZ()
+        + "\n当前玩家横向视角: " + getYaw(getPlayerEnt())
+        + "\n当前玩家纵向视角: " + getPitch(getPlayerEnt())
+        + "\n"
+    );*/
+    //ModPE["showTipMessage"](ForgottenCraft(BloodWolf["ForgottenCraftBlock"] , "getRenderType")(ForgottenCraft(BloodWolf["ForgottenCraftPlayer"] , "getPointedBlockId")()));
+    //ModPE["showTipMessage"](ForgottenCraft(BloodWolf["ForgottenCraftItem"] , "getName")(ForgottenCraft(BloodWolf["ForgottenCraftPlayer"] , "getCarriedItem")() , ForgottenCraft(BloodWolf["ForgottenCraftPlayer"] , "getCarriedItemData")() , true));
+}
+
+/*can use preventDefault()*/
+useItem = function(x , y , z , itemid , blockid , side , itemDamage , blockDamage){
+    if(side == 0){BloodWolfFunction["_LayBlock"](x , y - 1 , z);}
+    if(side == 1){BloodWolfFunction["_LayBlock"](x , y + 1 , z);}
+    if(side == 2){BloodWolfFunction["_LayBlock"](x , y , z - 1);}
+    if(side == 3){BloodWolfFunction["_LayBlock"](x , y , z + 1);}
+    if(side == 4){BloodWolfFunction["_LayBlock"](x - 1 , y , z);}
+    if(side == 5){BloodWolfFunction["_LayBlock"](x + 1 , y , z);}
+}

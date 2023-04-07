@@ -1,0 +1,38 @@
+ForgottenCraftAPI函数表
+注 : 开头有*的函数以无法使用
+
+*BloodWolf.ForgottenCraftFunction.setIDName_Item(ID , NameString名字串字符);
+
+*BloodWolf.ForgottenCraftFunction.setIDName_Block(ID , NameString名字串字符);
+
+*BloodWolf.ForgottenCraftFunction.setItem([ID , NameString名字串字符] , [TextureString材质串字符 , TextureData材质排列值] , [ItemType物品类型 , ItemTypeData物品类型排列值]);
+
+BloodWolf.ForgottenCraftFunction.DefaultTool.setItem([ID , NameString名字串字符] , [TextureString材质串字符 , TextureData材质排列值] , [ItemType物品类型 , ItemTypeData物品类型排列值]);
+用途 : 定义物品/工具
+ItemType物品类型 :
+    ◆ItemType.Item : 物品
+        ItemTypeData物品类型排列值:0为堆叠64创造物品栏装饰类,1为堆叠16创造物品栏装饰类,2为堆叠64创造物品栏材料类,3为堆叠16创造物品栏材料类
+    ◆ItemType.Tool : 工具
+        ItemTypeData物品类型排列值:0为镐,1为斧,2为铲,3为剑
+注 : 定义的物品尽量不要重名
+
+BloodWolf.ForgottenCraftFunction.setBlock([[ID , NameString名字串字符] , BlockType方块类型] , [[TextureString材质串字符 , TextureData材质排列值]] , LightLevel[] , BlockModel方块模型);
+用途 : 定义方块
+BlockType方块类型:
+    ◆BlockType.Block : 方块
+    ◆BlockType.Water : 水
+    ◆BlockType.Lava : 岩浆
+注 : 定义的方块尽量不要重名
+
+BloodWolf.ForgottenCraftFunction.AddMine([ID , Data] , Count数量 , TheHeight最高高度 , [替换方块ID , 替换方块Data]);
+用途 : 矿物生成
+
+BloodWolf.ForgottenCraftFunction.setBlockShape([ID , Data特殊值] , [[X开始 , X结束] , [Y开始 , Y结束] , [Z开始 , Z结束]]);
+
+BloodWolf.ForgottenCraftFunction.dropItem([x , y , z] , [ID , Count数量 , Data特殊值]);
+
+BloodWolf.ForgottenCraftFunction.canSeeSky(x , y , z);
+
+BloodWolf.ForgottenCraftFunction.saveData(路径 , 存入内容);
+
+BloodWolf.ForgottenCraftFunction.readData(路径 , 内容编码);
