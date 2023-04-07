@@ -1,106 +1,82 @@
-/*---------------------------------------------*/
-/*---------------------------------------------*/
-/* 尊重他人劳动成果 , 禁止抄袭 */
-/* Don't Copy , please */
-/*---------------------------------------------*/
-/*---------------------------------------------*/
-/* 作者我的百度贴吧用户名 : 我的世界之血狼 */
-/* 作者我的QQ : 1366329192 */
-/* Make by 我的世界之血狼 in Chinese Baidu Tieba */
-/* Maker's Gmail : pengchenxiang@gmail.com */
-/*---------------------------------------------*/
-/*---------------------------------------------*/
-/* 如果你能从我的源码这里改进了一些算法或者灵感或者其他什么的 */
-/* 我会很为你高兴的 */
-/* 但是请你不要抄袭 */
-/* 谢谢 */
-/* I will be happy for you if you can get something here */
-/* But don't copy my ModPE */
-/* That all , thanks */
-/*---------------------------------------------*/
-/*---------------------------------------------*/
-
 /*Variable*/
 var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
+minecraft_version = String(ModPE.getMinecraftVersion()).split(".");
 
-//define function
-TexturePackFile = function(_Forgotten0Craft_){
-    eval(new java["lang"]["String"](ModPE["getBytesFromTexturePack"]("[ForgottenCraft]" + _Forgotten0Craft_ + ".BloodWolf") , "UTF-8") + "");
-}
-TexturePackFile("BloodWolf");
-MinecraftVersion = String(ForgottenCraft(BloodWolf["ForgottenCraftModPE"] , "getMinecraftVersion")()).split(".");
-if(MinecraftVersion[0] !== "1" || MinecraftVersion[1] !== "1"){
-    TexturePackFile("BloodWolf.ForgottenCraftFunction");
-}
-if(MinecraftVersion[0] == "1" && MinecraftVersion[1] == "1"){
-    TexturePackFile("BloodWolf.ForgottenCraftFunction_");
-}
-TexturePackFile("BloodWolfFunction");
-TexturePackFile("GUI");
 
-//BlockLauncher function
+
+// define function
+function loadJsFileInTexture(file_name) {
+    eval(new java.lang.String(ModPE.getBytesFromTexturePack(file_name), "UTF-8") + "");
+}
+
+//loadJsFileInTexture("ForgottenCraftFunction.js");
+//loadJsFileInTexture("GUI.js");
+
+
+
+////BlockLauncher hook function
 /*can use preventDefault()*/
-attackHook = function(attacker , victim){
-    BloodWolf.ForgottenCraftFunction.DefaultTool.attackHook(attacker , victim);
+function attackHook(attacker, victim) {
+    BloodWolf.ForgottenCraftFunction.DefaultTool.attackHook(attacker, victim);
 }
 
 /*can use preventDefault()*/
-//chatHook = function(str){}
+//function chatHook(str){}
 
 /*can use preventDefault()*/
-continueDestroyBlock = function(x , y , z , side , progress){
-    BloodWolf.ForgottenCraftFunction.DefaultTool.continueDestroyBlock(x , y , z , side , progress);
+function continueDestroyBlock(x, y, z, side, progress) {
+    BloodWolf.ForgottenCraftFunction.DefaultTool.continueDestroyBlock(x, y, z, side, progress);
 }
 
 /*can use preventDefault()*/
-destroyBlock = function(x , y , z , side){
-    BloodWolf.ForgottenCraftFunction.DefaultTool.destroyBlock(x , y , z , side);
+function destroyBlock(x, y, z, side) {
+    BloodWolf.ForgottenCraftFunction.DefaultTool.destroyBlock(x, y, z, side);
 }
 
 /*can use preventDefault()*/
-//leaveGame = function(){}
+//function leaveGame(){}
 
-//projectileHitEntityHook = function(projectile , targetEntity){}
+//function projectileHitEntityHook(projectile , targetEntity){}
 
-//eatHook = function(hearts , saturationRatio){}
+//function eatHook(hearts , saturationRatio){}
 
-//entityAddedHook = function(entity){}
-
-/*can use preventDefault()*/
-//entityHurtHook = function(attacker , victim , halfhearts){}
-
-//entityRemovedHook = function(entity){}
+//function entityAddedHook(entity){}
 
 /*can use preventDefault()*/
-//explodeHook = function(entity , x , y , z , power , onFire){}
+//function entityHurtHook(attacker , victim , halfhearts){}
+
+//function entityRemovedHook(entity){}
 
 /*can use preventDefault()*/
-//serverMessageReceiveHook = function(str){}
+//function explodeHook(entity , x , y , z , power , onFire){}
 
 /*can use preventDefault()*/
-//deathHook = function(attacker , victim){}
+//function serverMessageReceiveHook(str){}
 
 /*can use preventDefault()*/
-//playerAddExpHook = function(player , experienceAdded){}
+//function deathHook(attacker , victim){}
 
 /*can use preventDefault()*/
-//playerExpLevelChangeHook = function(player , levelsAdded){}
+//function playerAddExpHook(player , experienceAdded){}
 
-//redstoneUpdateHook = function(x , y , z , newCurrent , someBooleanIDontKnow , blockId , blockData){}
+/*can use preventDefault()*/
+//function playerExpLevelChangeHook(player , levelsAdded){}
 
-newLevel = function(){
+//function redstoneUpdateHook(x , y , z , newCurrent , someBooleanIDontKnow , blockId , blockData){}
+
+function newLevel() {
 }
 
 /*can use preventDefault()*/
-startDestroyBlock = function(x , y , z , side){
-    BloodWolf.ForgottenCraftFunction.DefaultTool.startDestroyBlock(x , y , z , side);
+function startDestroyBlock(x, y, z, side) {
+    BloodWolf.ForgottenCraftFunction.DefaultTool.startDestroyBlock(x, y, z, side);
 }
 
-//projectileHitBlockHook = function(projectile , blockX , blockY , blockZ , side){}
+//function projectileHitBlockHook(projectile , blockX , blockY , blockZ , side){}
 
-modTick = function(){
+function modTick() {
     BloodWolf.ForgottenCraftFunction.DefaultTool.modTick();
-    
+
     /*ModPE["showTipMessage"](
         "\n当前所指方块ID: " + Player["getPointedBlockId"]()
         + "\n当前所指方块特殊值: " + Player["getPointedBlockData"]()
@@ -110,7 +86,7 @@ modTick = function(){
         + "\n当前所指生物模型ID: " + Entity["getRenderType"](Player["getPointedEntity"]())
         + "\n当前所指生物的皮肤路径: " + Entity["getMobSkin"](Player["getPointedEntity"]())
         + "\n"
- );
+);
     ModPE["showTipMessage"](
         "\n当前玩家X轴: " + getPlayerX()
         + "\n当前玩家Y轴: " + getPlayerY()
@@ -124,11 +100,6 @@ modTick = function(){
 }
 
 /*can use preventDefault()*/
-useItem = function(x , y , z , itemid , blockid , side , itemDamage , blockDamage){
-    if(side == 0){BloodWolfFunction["_LayBlock"](x , y - 1 , z);}
-    if(side == 1){BloodWolfFunction["_LayBlock"](x , y + 1 , z);}
-    if(side == 2){BloodWolfFunction["_LayBlock"](x , y , z - 1);}
-    if(side == 3){BloodWolfFunction["_LayBlock"](x , y , z + 1);}
-    if(side == 4){BloodWolfFunction["_LayBlock"](x - 1 , y , z);}
-    if(side == 5){BloodWolfFunction["_LayBlock"](x + 1 , y , z);}
+function useItem(x, y, z, itemid, blockid, side, itemDamage, blockDamage) {
+    // Todo something.
 }
