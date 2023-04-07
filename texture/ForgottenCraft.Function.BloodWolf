@@ -275,12 +275,244 @@ BloodWolf[_ForgottenCraft0Function_]["setToolDestroyBlockTime_3"] = function(_Fo
  ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(30 , 20/_Forgotten1Craft_);
 }
 
-BloodWolf[_ForgottenCraft0Function_]["preventDefault"] = function(){
- preventDefault();
+BloodWolf[_ForgottenCraft0Function_]["MineBeProduced"]1 = function(ID , 特殊值 , 数量 , 高度 , 替换方块){
+ 生成 = 0;生成 ++;
+ 几率 = Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]())// + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]());
+ x = getPlayerX() + Math["random"]() * 256
+ y = Math["random"]() * 高度
+ z = getPlayerZ() + Math["random"]() * 256
+ if(Level["getTile"](x , y , z) == 替换方块){
+  if(生成 <= 数量){
+   Level["setTile"](x , y , z , ID , 特殊值);
+   if(几率 == 0){
+    Level["setTile"](x + 1 , y , z , ID , 特殊值);
+    Level["setTile"](x , y , z + 1 , ID , 特殊值);
+    Level["setTile"](x + 1 , y , z + 1 , ID , 特殊值);
+    Level["setTile"](x , y + 1 , z , ID , 特殊值);
+    Level["setTile"](x + 1 , y - 1 , z + 1 , ID , 特殊值);
+   }
+   if(几率 == 1){
+    Level["setTile"](x - 1 , y , z , ID , 特殊值);
+    Level["setTile"](x , y , z - 1 , ID , 特殊值);
+    Level["setTile"](x - 1 , y , z - 1 , ID , 特殊值);
+    Level["setTile"](x , y - 1 , z , ID , 特殊值);
+    Level["setTile"](x - 1 , y - 1 , z , ID , 特殊值);
+    Level["setTile"](x , y - 1 , z - 1 , ID , 特殊值);
+    Level["setTile"](x - 1 , y - 1 , z - 1 , ID , 特殊值);
+   }
+   if(几率 == 2){
+    Level["setTile"](x , y - 1 , z , ID , 特殊值);
+    Level["setTile"](x + 1 , y - 1 , z , ID , 特殊值);
+    Level["setTile"](x , y - 1 , z + 1 , ID , 特殊值);
+   }
+   if(几率 == 3){
+    Level["setTile"](x + 1 , y , z , ID , 特殊值);
+    Level["setTile"](x , y - 1 , z , ID , 特殊值);
+   }
+   if(几率 == 4){
+    Level["setTile"](x - 1 , y , z , ID , 特殊值);
+    Level["setTile"](x , y , z - 1 , ID , 特殊值);
+    Level["setTile"](x , y - 1 , z , ID , 特殊值);
+    Level["setTile"](x - 1 , y - 1 , z , ID , 特殊值);
+    Level["setTile"](x , y - 1 , z - 1 , ID , 特殊值);
+    Level["setTile"](x - 1 , y - 1 , z - 1 , ID , 特殊值);
+   }
+   if(几率 == 5){
+   }
+   if(几率 == 6){
+   }
+   if(几率 == 7){
+   }
+   if(几率 == 8){
+   }
+   if(几率 == 9){
+   }
+   if(几率 == 10){
+   }
+  }
+  else if(生成 > 数量){生成 = 0}
+ }
+}
+BloodWolf[_ForgottenCraft0Function_]["MineBeProduced"]2 = function(ID , 特殊值 , 数量 , 高度 , 替换方块){
+ 生成 = 0;生成 ++;
+ 几率 = Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]())// + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]());
+ x = getPlayerX() + Math["random"]() * 256
+ y = Math["random"]() * 高度
+ z = getPlayerZ() - Math["random"]() * 256
+ if(Level["getTile"](x , y , z) == 替换方块){
+  if(生成 <= 数量){
+   Level["setTile"](x , y , z , ID , 特殊值);
+   if(几率 == 0){
+    Level["setTile"](x + 1 , y , z , ID , 特殊值);
+    Level["setTile"](x , y , z + 1 , ID , 特殊值);
+    Level["setTile"](x + 1 , y , z + 1 , ID , 特殊值);
+    Level["setTile"](x , y + 1 , z , ID , 特殊值);
+    Level["setTile"](x + 1 , y - 1 , z + 1 , ID , 特殊值);
+   }
+   if(几率 == 1){
+    Level["setTile"](x - 1 , y , z , ID , 特殊值);
+    Level["setTile"](x , y , z - 1 , ID , 特殊值);
+    Level["setTile"](x - 1 , y , z - 1 , ID , 特殊值);
+    Level["setTile"](x , y - 1 , z , ID , 特殊值);
+    Level["setTile"](x - 1 , y - 1 , z , ID , 特殊值);
+    Level["setTile"](x , y - 1 , z - 1 , ID , 特殊值);
+    Level["setTile"](x - 1 , y - 1 , z - 1 , ID , 特殊值);
+   }
+   if(几率 == 2){
+    Level["setTile"](x , y - 1 , z , ID , 特殊值);
+    Level["setTile"](x + 1 , y - 1 , z , ID , 特殊值);
+    Level["setTile"](x , y - 1 , z + 1 , ID , 特殊值);
+   }
+   if(几率 == 3){
+    Level["setTile"](x + 1 , y , z , ID , 特殊值);
+    Level["setTile"](x , y - 1 , z , ID , 特殊值);
+   }
+   if(几率 == 4){
+    Level["setTile"](x - 1 , y , z , ID , 特殊值);
+    Level["setTile"](x , y , z - 1 , ID , 特殊值);
+    Level["setTile"](x , y - 1 , z , ID , 特殊值);
+    Level["setTile"](x - 1 , y - 1 , z , ID , 特殊值);
+    Level["setTile"](x , y - 1 , z - 1 , ID , 特殊值);
+    Level["setTile"](x - 1 , y - 1 , z - 1 , ID , 特殊值);
+   }
+   if(几率 == 5){
+   }
+   if(几率 == 6){
+   }
+   if(几率 == 7){
+   }
+   if(几率 == 8){
+   }
+   if(几率 == 9){
+   }
+   if(几率 == 10){
+   }
+  }
+  else if(生成 > 数量){生成 = 0}
+ }
+}
+BloodWolf[_ForgottenCraft0Function_]["MineBeProduced"]3 = function(ID , 特殊值 , 数量 , 高度 , 替换方块){
+ 生成 = 0;生成 ++;
+ 几率 = Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]())// + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]());
+ x = getPlayerX() - Math["random"]() * 256
+ y = Math["random"]() * 高度
+ z = getPlayerZ() + Math["random"]() * 256
+ if(Level["getTile"](x , y , z) == 替换方块){
+  if(生成 <= 数量){
+   Level["setTile"](x , y , z , ID , 特殊值);
+   if(几率 == 0){
+    Level["setTile"](x + 1 , y , z , ID , 特殊值);
+    Level["setTile"](x , y , z + 1 , ID , 特殊值);
+    Level["setTile"](x + 1 , y , z + 1 , ID , 特殊值);
+    Level["setTile"](x , y + 1 , z , ID , 特殊值);
+    Level["setTile"](x + 1 , y - 1 , z + 1 , ID , 特殊值);
+   }
+   if(几率 == 1){
+    Level["setTile"](x - 1 , y , z , ID , 特殊值);
+    Level["setTile"](x , y , z - 1 , ID , 特殊值);
+    Level["setTile"](x - 1 , y , z - 1 , ID , 特殊值);
+    Level["setTile"](x , y - 1 , z , ID , 特殊值);
+    Level["setTile"](x - 1 , y - 1 , z , ID , 特殊值);
+    Level["setTile"](x , y - 1 , z - 1 , ID , 特殊值);
+    Level["setTile"](x - 1 , y - 1 , z - 1 , ID , 特殊值);
+   }
+   if(几率 == 2){
+    Level["setTile"](x , y - 1 , z , ID , 特殊值);
+    Level["setTile"](x + 1 , y - 1 , z , ID , 特殊值);
+    Level["setTile"](x , y - 1 , z + 1 , ID , 特殊值);
+   }
+   if(几率 == 3){
+    Level["setTile"](x + 1 , y , z , ID , 特殊值);
+    Level["setTile"](x , y - 1 , z , ID , 特殊值);
+   }
+   if(几率 == 4){
+    Level["setTile"](x - 1 , y , z , ID , 特殊值);
+    Level["setTile"](x , y , z - 1 , ID , 特殊值);
+    Level["setTile"](x , y - 1 , z , ID , 特殊值);
+    Level["setTile"](x - 1 , y - 1 , z , ID , 特殊值);
+    Level["setTile"](x , y - 1 , z - 1 , ID , 特殊值);
+    Level["setTile"](x - 1 , y - 1 , z - 1 , ID , 特殊值);
+   }
+   if(几率 == 5){
+   }
+   if(几率 == 6){
+   }
+   if(几率 == 7){
+   }
+   if(几率 == 8){
+   }
+   if(几率 == 9){
+   }
+   if(几率 == 10){
+   }
+  }
+  else if(生成 > 数量){生成 = 0}
+ }
+}
+BloodWolf[_ForgottenCraft0Function_]["MineBeProduced"]4 = function(ID , 特殊值 , 数量 , 高度 , 替换方块){
+ 生成 = 0;生成 ++;
+ 几率 = Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]())// + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]());
+ x = getPlayerX() - Math["random"]() * 256
+ y = Math["random"]() * 高度
+ z = getPlayerZ() - Math["random"]() * 256
+ if(Level["getTile"](x , y , z) == 替换方块){
+  if(生成 <= 数量){
+   Level["setTile"](x , y , z , ID , 特殊值);
+   if(几率 == 0){
+    Level["setTile"](x + 1 , y , z , ID , 特殊值);
+    Level["setTile"](x , y , z + 1 , ID , 特殊值);
+    Level["setTile"](x + 1 , y , z + 1 , ID , 特殊值);
+    Level["setTile"](x , y + 1 , z , ID , 特殊值);
+    Level["setTile"](x + 1 , y - 1 , z + 1 , ID , 特殊值);
+   }
+   if(几率 == 1){
+    Level["setTile"](x - 1 , y , z , ID , 特殊值);
+    Level["setTile"](x , y , z - 1 , ID , 特殊值);
+    Level["setTile"](x - 1 , y , z - 1 , ID , 特殊值);
+    Level["setTile"](x , y - 1 , z , ID , 特殊值);
+    Level["setTile"](x - 1 , y - 1 , z , ID , 特殊值);
+    Level["setTile"](x , y - 1 , z - 1 , ID , 特殊值);
+    Level["setTile"](x - 1 , y - 1 , z - 1 , ID , 特殊值);
+   }
+   if(几率 == 2){
+    Level["setTile"](x , y - 1 , z , ID , 特殊值);
+    Level["setTile"](x + 1 , y - 1 , z , ID , 特殊值);
+    Level["setTile"](x , y - 1 , z + 1 , ID , 特殊值);
+   }
+   if(几率 == 3){
+    Level["setTile"](x + 1 , y , z , ID , 特殊值);
+    Level["setTile"](x , y - 1 , z , ID , 特殊值);
+   }
+   if(几率 == 4){
+    Level["setTile"](x - 1 , y , z , ID , 特殊值);
+    Level["setTile"](x , y , z - 1 , ID , 特殊值);
+    Level["setTile"](x , y - 1 , z , ID , 特殊值);
+    Level["setTile"](x - 1 , y - 1 , z , ID , 特殊值);
+    Level["setTile"](x , y - 1 , z - 1 , ID , 特殊值);
+    Level["setTile"](x - 1 , y - 1 , z - 1 , ID , 特殊值);
+   }
+   if(几率 == 5){
+   }
+   if(几率 == 6){
+   }
+   if(几率 == 7){
+   }
+   if(几率 == 8){
+   }
+   if(几率 == 9){
+   }
+   if(几率 == 10){
+   }
+  }
+  else if(生成 > 数量){生成 = 0}
+ }
 }
 
-BloodWolf[_ForgottenCraft0Function_]["setGameSpeed"] = function(_Forgotten0Craft_){
- ForgottenCraft(BloodWolf[_ForgottenCraft1Function_] , "setGameSpeed")(_Forgotten0Craft_ * 20);
+BloodWolf[_ForgottenCraft0Function_]["MineBeProduced"] = function(ID , 特殊值 , 数量 , 高度 , 替换方块){
+ BloodWolf[_ForgottenCraft0Function_]["MineBeProduced"]1(ID , 特殊值 , 数量 , 高度 , 替换方块);
+ BloodWolf[_ForgottenCraft0Function_]["MineBeProduced"]2(ID , 特殊值 , 数量 , 高度 , 替换方块);
+ BloodWolf[_ForgottenCraft0Function_]["MineBeProduced"]3(ID , 特殊值 , 数量 , 高度 , 替换方块);
+ BloodWolf[_ForgottenCraft0Function_]["MineBeProduced"]4(ID , 特殊值 , 数量 , 高度 , 替换方块);
 }
 
 BloodWolf[_ForgottenCraft0Function_]["saveData"] = function(_Forgotten0Craft_ , _Forgotten1Craft_){

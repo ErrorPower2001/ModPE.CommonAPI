@@ -33,60 +33,60 @@ RunTexturePackFile("ForgottenCraft.Function" , 0);
 RunTexturePackFile("ForgottenCraft.Function" , 1);
 
 if(! ForgottenCraft(BloodWolf[_ForgottenCraft0Function_] , "readData")("/sdcard/games/com.mojang/[ModPE]ForgottenCraft/[ModPE][API]ForgottenCraft.JS" , "UTF-8")){
- ForgottenCraft(BloodWolf[_ForgottenCraft0Function_] , "saveData")("/sdcard/games/com.mojang/[ModPE]ForgottenCraft/[ModPE][API]ForgottenCraft.JS" , "\/*attackHook_BloodWolf = function(attacker , victim){}*\/\n\n\/*chatHook_BloodWolf = function(str){}*\/\n\n\/*continueDestroyBlock_BloodWolf = function(x , y , z , side , progress){}*\/\n\n\/*destroyBlock_BloodWolf = function(x , y , z , side){}*\/\n\n\/*projectileHitEntityHook_BloodWolf = function(projectile , targetEntity){}*\/\n\n\/*eatHook_BloodWolf = function(hearts , saturationRatio){}*\/\n\n\/*entityAddedHook_BloodWolf = function(entity){}*\/\n\n\/*entityHurtHook_BloodWolf = function(attacker , victim , halfhearts){}*\/\n\n\/*entityRemovedHook_BloodWolf = function(entity){}*\/\n\n\/*explodeHook_BloodWolf = function(entity , x , y , z , power , onFire){}*\/\n\n\/*serverMessageReceiveHook_BloodWolf = function(str){}*\/\n\n\/*deathHook_BloodWolf = function(attacker , victim){}*\/\n\n\/*playerAddExpHook_BloodWolf = function(player , experienceAdded){}*\/\n\n\/*playerExpLevelChangeHook_BloodWolf = function(player , levelsAdded){}*\/\n\n\/*redstoneUpdateHook_BloodWolf = function(x , y , z , newCurrent , someBooleanIDontKnow , blockId , blockData){}*\/\n\n\/*newLevel_BloodWolf = function(){}*\/\n\n\/*startDestroyBlock_BloodWolf = function(x , y , z , side){}*\/\n\n\/*projectileHitBlockHook_BloodWolf = function(projectile , blockX , blockY , blockZ , side){}*\/\n\n\/*modTick_BloodWolf = function(){}*\/\n\n\/*useItem_BloodWolf = function(x , y , z , itemid , blockid , side , itemDamage , blockDamage){}*\/\n\nBloodWolf[0][\"setItem\"](500 , [\"texture\" , 0] , \"...\" , [ItemType_Tool , 0] , 250);\nBloodWolf[0][\"setItem\"](501 , [\"texture\" , 1] , \"...\" , [ItemType_Tool , 1] , 250);\nBloodWolf[0][\"setItem\"](502 , [\"texture\" , 2] , \"...\" , [ItemType_Tool , 2] , 250);\nBloodWolf[0][\"setItem\"](503 , [\"texture\" , 3] , \"...\" , [ItemType_Tool , 3] , 250);");
+ ForgottenCraft(BloodWolf[_ForgottenCraft0Function_] , "saveData")("/sdcard/games/com.mojang/[ModPE]ForgottenCraft/[ModPE][API]ForgottenCraft.JS" , "\/*attackHook_ = function(attacker , victim){}*\/\n\n\/*chatHook_ = function(str){}*\/\n\n\/*continueDestroyBlock_ = function(x , y , z , side , progress){}*\/\n\n\/*destroyBlock_ = function(x , y , z , side){}*\/\n\n\/*projectileHitEntityHook_ = function(projectile , targetEntity){}*\/\n\n\/*eatHook_ = function(hearts , saturationRatio){}*\/\n\n\/*entityAddedHook_ = function(entity){}*\/\n\n\/*entityHurtHook_ = function(attacker , victim , halfhearts){}*\/\n\n\/*entityRemovedHook_ = function(entity){}*\/\n\n\/*explodeHook_ = function(entity , x , y , z , power , onFire){}*\/\n\n\/*serverMessageReceiveHook_ = function(str){}*\/\n\n\/*deathHook_ = function(attacker , victim){}*\/\n\n\/*playerAddExpHook_ = function(player , experienceAdded){}*\/\n\n\/*playerExpLevelChangeHook_ = function(player , levelsAdded){}*\/\n\n\/*redstoneUpdateHook_ = function(x , y , z , newCurrent , someBooleanIDontKnow , blockId , blockData){}*\/\n\n\/*newLevel_ = function(){}*\/\n\n\/*startDestroyBlock_ = function(x , y , z , side){}*\/\n\n\/*projectileHitBlockHook_ = function(projectile , blockX , blockY , blockZ , side){}*\/\n\n\/*modTick_ = function(){}*\/\n\n\/*useItem_ = function(x , y , z , itemid , blockid , side , itemDamage , blockDamage){}*\/\n\nBloodWolf[0][\"setItem\"](500 , [\"texture\" , 0] , \"...\" , [ItemType_Tool , 0] , 250);\nBloodWolf[0][\"setItem\"](501 , [\"texture\" , 1] , \"...\" , [ItemType_Tool , 1] , 250);\nBloodWolf[0][\"setItem\"](502 , [\"texture\" , 2] , \"...\" , [ItemType_Tool , 2] , 250);\nBloodWolf[0][\"setItem\"](503 , [\"texture\" , 3] , \"...\" , [ItemType_Tool , 3] , 250);");
 }
 
 //function
 /*can use preventDefault()*/
-//attackHook_ = function(attacker , victim){}
+//attackHook_BloodWolf = function(attacker , victim){}
 
 /*can use preventDefault()*/
-//chatHook_ = function(str){}
+//chatHook_BloodWolf = function(str){}
 
 /*can use preventDefault()*/
-//continueDestroyBlock_ = function(x , y , z , side , progress){}
+//continueDestroyBlock_BloodWolf = function(x , y , z , side , progress){}
 
 /*can use preventDefault()*/
-//destroyBlock_ = function(x , y , z , side){}
+//destroyBlock_BloodWolf = function(x , y , z , side){}
 
-//projectileHitEntityHook_ = function(projectile , targetEntity){}
+//projectileHitEntityHook_BloodWolf = function(projectile , targetEntity){}
 
-//eatHook_ = function(hearts , saturationRatio){}
+//eatHook_BloodWolf = function(hearts , saturationRatio){}
 
-//entityAddedHook_ = function(entity){}
-
-/*can use preventDefault()*/
-//entityHurtHook_ = function(attacker , victim , halfhearts){}
-
-//entityRemovedHook_ = function(entity){}
+//entityAddedHook_BloodWolf = function(entity){}
 
 /*can use preventDefault()*/
-//explodeHook_ = function(entity , x , y , z , power , onFire){}
+//entityHurtHook_BloodWolf = function(attacker , victim , halfhearts){}
+
+//entityRemovedHook_BloodWolf = function(entity){}
 
 /*can use preventDefault()*/
-//serverMessageReceiveHook_ = function(str){}
+//explodeHook_BloodWolf = function(entity , x , y , z , power , onFire){}
 
 /*can use preventDefault()*/
-//deathHook_ = function(attacker , victim){}
+//serverMessageReceiveHook_BloodWolf = function(str){}
 
 /*can use preventDefault()*/
-//playerAddExpHook_ = function(player , experienceAdded){}
+//deathHook_BloodWolf = function(attacker , victim){}
 
 /*can use preventDefault()*/
-//playerExpLevelChangeHook_ = function(player , levelsAdded){}
-
-//redstoneUpdateHook_ = function(x , y , z , newCurrent , someBooleanIDontKnow , blockId , blockData){}
-
-//newLevel_ = function(){}
+//playerAddExpHook_BloodWolf = function(player , experienceAdded){}
 
 /*can use preventDefault()*/
-//startDestroyBlock_ = function(x , y , z , side){}
+//playerExpLevelChangeHook_BloodWolf = function(player , levelsAdded){}
 
-//projectileHitBlockHook_ = function(projectile , blockX , blockY , blockZ , side){}
+//redstoneUpdateHook_BloodWolf = function(x , y , z , newCurrent , someBooleanIDontKnow , blockId , blockData){}
 
-//modTick_ = function(){}
+//newLevel_BloodWolf = function(){}
 
 /*can use preventDefault()*/
-//useItem_ = function(x , y , z , itemid , blockid , side , itemDamage , blockDamage){}
+//startDestroyBlock_BloodWolf = function(x , y , z , side){}
+
+//projectileHitBlockHook_BloodWolf = function(projectile , blockX , blockY , blockZ , side){}
+
+//modTick_BloodWolf = function(){}
+
+/*can use preventDefault()*/
+//useItem_BloodWolf = function(x , y , z , itemid , blockid , side , itemDamage , blockDamage){}
 
 eval(new ForgottenCraft(BloodWolf[_ForgottenCraft0Function_] , "readData")("/sdcard/games/com.mojang/[ModPE]ForgottenCraft/[ModPE][API]ForgottenCraft.JS" , "UTF-8"))
