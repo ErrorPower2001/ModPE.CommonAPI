@@ -215,7 +215,7 @@ ErrorPower.Block.setAxeDestroyBlockTime = function(speed){
     Block.setDestroyTime(187, 4 / final_speed);
     Block.setDestroyTime(block_name_id["图纸绘制台"], 3 / final_speed);
 }
-ErrorPower.Block.setToolDestroyBlockTime_2 = function(speed){
+ErrorPower.Block.setShovelDestroyBlockTime = function(speed){
     final_speed = speed;
     Block.setDestroyTime(2, 0.9 / final_speed);
     Block.setDestroyTime(3, 0.75 / final_speed);
@@ -229,7 +229,7 @@ ErrorPower.Block.setToolDestroyBlockTime_2 = function(speed){
     Block.setDestroyTime(198, 0.9 / final_speed);
     Block.setDestroyTime(243, 0.9 / final_speed);
 }
-ErrorPower.Block.setToolDestroyBlockTime_3 = function(speed){
+ErrorPower.Block.setSwordDestroyBlockTime = function(speed){
     final_speed = speed*20;
     Block.setDestroyTime(30, 20 / final_speed);
 }
