@@ -15,9 +15,10 @@ function loadScript(filename) {
 
 // 按依赖顺序加载模块
 loadScript("code/constants.js");
-loadScript("code/hooks.js");
+loadScript("code/namespace.js");
 loadScript("code/state.js");
-loadScript("code/Function.js");
+loadScript("code/hooks.js");
+loadScript("code/functions.js");
 
 // ========================= 用户配置文件初始化 =========================
 
