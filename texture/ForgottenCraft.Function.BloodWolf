@@ -13,6 +13,21 @@ ForgottenCraft = function(_Forgotten0Craft_ , _Forgotten1Craft_){
  return _Forgotten0Craft_[_Forgotten1Craft_];
 }
 
+// ========================= 常量定义 =========================
+
+var ItemType_Item = 0;
+var ItemType_Tool = 1;
+
+var TOOL_PICKAXE = 0;
+var TOOL_AXE     = 1;
+var TOOL_SHOVEL  = 2;
+var TOOL_SWORD   = 3;
+
+var ITEM_DECO_STACK64    = 0;
+var ITEM_DECO_STACK16    = 1;
+var ITEM_MATERIAL_STACK64 = 2;
+var ITEM_MATERIAL_STACK16 = 3;
+
 /*---------------------------------------------*/
 /*---------------------------------------------*/
 /*__尊重他人劳动成果，禁止抄袭__*/
