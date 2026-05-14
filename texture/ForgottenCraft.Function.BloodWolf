@@ -342,239 +342,134 @@ API.readData = function (path, encoding) {
   return result;
 };
 
-//function
-/*can use preventDefault()*/
-attackHook = function(attacker , victim){
- if(attackHook_){attackHook_(attacker , victim);}
- if(hookAttack){hookAttack(attacker , victim);}
- currentItemId = ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")();
- currentItemData = ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItemData")();
- 目前手持物品�?= ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getSelectedSlotId")();
- enchantments = ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getEnchantments")(目前手持物品�?;
- if(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() == CustomTools[0][currentItemId]){
-  tempToolId = [currentItemId , currentItemData];
-  ForgottenCraft(BloodWolf[_ForgottenCraft4Function_] , "setCarriedItem")(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getEntity")() , 278 , 1 , 0);
-  for(ench = 0; ench < enchantments["length"]; ench++){
-   ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "enchant")(目前手持物品�?, enchantments[附魔].type , enchantments[附魔].level);
+// ========================= 钩子实现 =========================
+
+attackHook = function (attacker, victim) {
+  if (attackHook_) attackHook_(attacker, victim);
+  if (hookAttack) hookAttack(attacker, victim);
+  swapToVanillaTool(TOOL_PICKAXE, 278);
+  swapToVanillaTool(TOOL_AXE,     279);
+  swapToVanillaTool(TOOL_SHOVEL,  277);
+  swapToVanillaTool(TOOL_SWORD,   276);
+};
+
+chatHook = function (str) {
+  if (chatHook_) chatHook_(str);
+  if (hookChat) hookChat(str);
+};
+
+continueDestroyBlock = function (x, y, z, side, progress) {
+  if (continueDestroyBlock_) continueDestroyBlock_(x, y, z, side, progress);
+  if (hookContinueDestroyBlock) hookContinueDestroyBlock(x, y, z, side, progress);
+};
+
+destroyBlock = function (x, y, z, side) {
+  if (destroyBlock_) destroyBlock_(x, y, z, side);
+  if (hookDestroyBlock) hookDestroyBlock(x, y, z, side);
+  swapToVanillaTool(TOOL_PICKAXE, 278);
+  swapToVanillaTool(TOOL_AXE,     279);
+  swapToVanillaTool(TOOL_SHOVEL,  277);
+  swapToVanillaTool(TOOL_SWORD,   276);
+};
+
+projectileHitEntityHook = function (projectile, targetEntity) {
+  if (projectileHitEntityHook_) projectileHitEntityHook_(projectile, targetEntity);
+  if (hookProjectileHitEntity) hookProjectileHitEntity(projectile, targetEntity);
+};
+
+eatHook = function (hearts, saturationRatio) {
+  if (eatHook_) eatHook_(hearts, saturationRatio);
+  if (hookEat) hookEat(hearts, saturationRatio);
+};
+
+entityAddedHook = function (entity) {
+  if (entityAddedHook_) entityAddedHook_(entity);
+  if (hookEntityAdded) hookEntityAdded(entity);
+};
+
+entityHurtHook = function (attacker, victim, halfhearts) {
+  if (entityHurtHook_) entityHurtHook_(attacker, victim, halfhearts);
+  if (hookEntityHurt) hookEntityHurt(attacker, victim, halfhearts);
+};
+
+entityRemovedHook = function (entity) {
+  if (entityRemovedHook_) entityRemovedHook_(entity);
+  if (hookEntityRemoved) hookEntityRemoved(entity);
+};
+
+explodeHook = function (entity, x, y, z, power, onFire) {
+  if (explodeHook_) explodeHook_(entity, x, y, z, power, onFire);
+  if (hookExplode) hookExplode(entity, x, y, z, power, onFire);
+};
+
+serverMessageReceiveHook = function (str) {
+  if (serverMessageReceiveHook_) serverMessageReceiveHook_(str);
+  if (hookServerMessageReceive) hookServerMessageReceive(str);
+};
+
+deathHook = function (attacker, victim) {
+  if (deathHook_) deathHook_(attacker, victim);
+  if (hookDeath) hookDeath(attacker, victim);
+};
+
+playerAddExpHook = function (player, experienceAdded) {
+  if (playerAddExpHook_) playerAddExpHook_(player, experienceAdded);
+  if (hookPlayerAddExp) hookPlayerAddExp(player, experienceAdded);
+};
+
+playerExpLevelChangeHook = function (player, levelsAdded) {
+  if (playerExpLevelChangeHook_) playerExpLevelChangeHook_(player, levelsAdded);
+  if (hookPlayerExpLevelChange) hookPlayerExpLevelChange(player, levelsAdded);
+};
+
+redstoneUpdateHook = function (x, y, z, newCurrent, isWorldGen, blockId, blockData) {
+  if (redstoneUpdateHook_) redstoneUpdateHook_(x, y, z, newCurrent, isWorldGen, blockId, blockData);
+  if (hookRedstoneUpdate) hookRedstoneUpdate(x, y, z, newCurrent, isWorldGen, blockId, blockData);
+};
+
+newLevel = function () {
+  if (newLevel_) newLevel_();
+  if (hookNewLevel) hookNewLevel();
+};
+
+startDestroyBlock = function (x, y, z, side) {
+  if (startDestroyBlock_) startDestroyBlock_(x, y, z, side);
+  if (hookStartDestroyBlock) hookStartDestroyBlock(x, y, z, side);
+  var carriedId = _Player.getCarriedItem();
+  if (carriedId === CustomTools[TOOL_PICKAXE][carriedId]) API.setToolDestroyTime_Pickaxe(6.0);
+  if (carriedId === CustomTools[TOOL_AXE][carriedId])     API.setToolDestroyTime_Axe(6.0);
+  if (carriedId === CustomTools[TOOL_SHOVEL][carriedId])  API.setToolDestroyTime_Shovel(6.0);
+  if (carriedId === CustomTools[TOOL_SWORD][carriedId])   API.setToolDestroyTime_Shears(6.0);
+};
+
+projectileHitBlockHook = function (projectile, blockX, blockY, blockZ, side) {
+  if (projectileHitBlockHook_) projectileHitBlockHook_(projectile, blockX, blockY, blockZ, side);
+  if (hookProjectileHitBlock) hookProjectileHitBlock(projectile, blockX, blockY, blockZ, side);
+};
+
+modTick = function () {
+  if (modTick_) modTick_();
+  if (hookModTick) hookModTick();
+  var carriedId = _Player.getCarriedItem();
+  var carriedData = _Player.getCarriedItemData();
+  var slotId = _Player.getSelectedSlotId();
+  var enchList = _Player.getEnchantments(slotId);
+  if (carriedId !== CustomTools[TOOL_PICKAXE][carriedId]) API.setToolDestroyTime_Pickaxe(1.0);
+  if (carriedId !== CustomTools[TOOL_AXE][carriedId])     API.setToolDestroyTime_Axe(1.0);
+  if (carriedId !== CustomTools[TOOL_SHOVEL][carriedId])  API.setToolDestroyTime_Shovel(1.0);
+  if (carriedId !== CustomTools[TOOL_SWORD][carriedId])   API.setToolDestroyTime_Shears(1.0);
+  if (tempToolId) {
+    if (carriedId === VanillaToolIDs[carriedId]) {
+      _Entity.setCarriedItem(_Player.getEntity(), tempToolId[0], 1, tempToolId[1] + 1);
+      for (var i = 0; i < enchList.length; i++) {
+        _Player.enchant(slotId, enchList[i].type, enchList[i].level);
+      }
+      tempToolId = null;
+    }
   }
- }
- if(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() == CustomTools[1][currentItemId]){
-  tempToolId = [currentItemId , currentItemData];
-  ForgottenCraft(BloodWolf[_ForgottenCraft4Function_] , "setCarriedItem")(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getEntity")() , 279 , 1 , 0);
-  for(ench = 0; ench < enchantments["length"]; ench++){
-   ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "enchant")(目前手持物品�?, enchantments[附魔].type , enchantments[附魔].level);
-  }
- }
- if(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() == CustomTools[2][currentItemId]){
-  tempToolId = [currentItemId , currentItemData];
-  ForgottenCraft(BloodWolf[_ForgottenCraft4Function_] , "setCarriedItem")(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getEntity")() , 277 , 1 , 0);
-  for(ench = 0; ench < enchantments["length"]; ench++){
-   ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "enchant")(目前手持物品�?, enchantments[附魔].type , enchantments[附魔].level);
-  }
- }
- if(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() == CustomTools[3][currentItemId]){
-  tempToolId = [currentItemId , currentItemData];
-  ForgottenCraft(BloodWolf[_ForgottenCraft4Function_] , "setCarriedItem")(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getEntity")() , 276 , 1 , 0);
-  for(ench = 0; ench < enchantments["length"]; ench++){
-   ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "enchant")(目前手持物品�?, enchantments[附魔].type , enchantments[附魔].level);
-  }
- }
-}
+};
 
-/*can use preventDefault()*/
-chatHook = function(str){
- if(chatHook_){chatHook_(str);}
- if(hookChat){hookChat(str);}
-}
-
-/*can use preventDefault()*/
-continueDestroyBlock = function(x , y , z , side , progress){
- if(continueDestroyBlock_){continueDestroyBlock_(x , y , z , side , progress);}
- if(hookContinueDestroyBlock){hookContinueDestroyBlock(x , y , z , side , progress);}
-}
-
-/*can use preventDefault()*/
-destroyBlock = function(x , y , z , side){
- if(destroyBlock_){destroyBlock_(x , y , z , side);}
- if(hookDestroyBlock){hookDestroyBlock(x , y , z , side);}
- currentItemId = ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")();
- currentItemData = ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItemData")();
- 目前手持物品�?= ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getSelectedSlotId")();
- enchantments = ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getEnchantments")(目前手持物品�?;
- if(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() == CustomTools[0][currentItemId]){
-  tempToolId = [currentItemId , currentItemData];
-  ForgottenCraft(BloodWolf[_ForgottenCraft4Function_] , "setCarriedItem")(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getEntity")() , 278 , 1 , 0);
-  for(ench = 0; ench < enchantments["length"]; ench++){
-   ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "enchant")(目前手持物品�?, enchantments[附魔].type , enchantments[附魔].level);
-  }
- }
- if(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() == CustomTools[1][currentItemId]){
-  tempToolId = [currentItemId , currentItemData];
-  ForgottenCraft(BloodWolf[_ForgottenCraft4Function_] , "setCarriedItem")(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getEntity")() , 279 , 1 , 0);
-  for(ench = 0; ench < enchantments["length"]; ench++){
-   ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "enchant")(目前手持物品�?, enchantments[附魔].type , enchantments[附魔].level);
-  }
- }
- if(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() == CustomTools[2][currentItemId]){
-  tempToolId = [currentItemId , currentItemData];
-  ForgottenCraft(BloodWolf[_ForgottenCraft4Function_] , "setCarriedItem")(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getEntity")() , 277 , 1 , 0);
-  for(ench = 0; ench < enchantments["length"]; ench++){
-   ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "enchant")(目前手持物品�?, enchantments[附魔].type , enchantments[附魔].level);
-  }
- }
- if(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() == CustomTools[3][currentItemId]){
-  tempToolId = [currentItemId , currentItemData];
-  ForgottenCraft(BloodWolf[_ForgottenCraft4Function_] , "setCarriedItem")(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getEntity")() , 276 , 1 , 0);
-  for(ench = 0; ench < enchantments["length"]; ench++){
-   ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "enchant")(目前手持物品�?, enchantments[附魔].type , enchantments[附魔].level);
-  }
- }
-}
-
-projectileHitEntityHook = function(projectile , targetEntity){
- if(projectileHitEntityHook_){projectileHitEntityHook_(projectile , targetEntity);}
- if(hookProjectileHitEntity){hookProjectileHitEntity(projectile , targetEntity);}
-}
-
-eatHook = function(hearts , saturationRatio){
- if(eatHook_){eatHook_(hearts , saturationRatio);}
- if(hookEat){hookEat(hearts , saturationRatio);}
-}
-
-entityAddedHook = function(entity){
- if(entityAddedHook_){entityAddedHook_(entity);}
- if(hookEntityAdded){hookEntityAdded(entity);}
-}
-
-/*can use preventDefault()*/
-entityHurtHook = function(attacker , victim , halfhearts){
- if(entityHurtHook_){entityHurtHook_(attacker , victim , halfhearts);}
- if(hookEntityHurt){hookEntityHurt(attacker , victim , halfhearts);}
-}
-
-entityRemovedHook = function(entity){
- if(entityRemovedHook_){entityRemovedHook_(entity);}
- if(hookEntityRemoved){hookEntityRemoved(entity);}
-}
-
-/*can use preventDefault()*/
-explodeHook = function(entity , x , y , z , power , onFire){
- if(explodeHook_){explodeHook_(entity , x , y , z , power , onFire);}
- if(hookExplode){hookExplode(entity , x , y , z , power , onFire);}
-}
-
-/*can use preventDefault()*/
-serverMessageReceiveHook = function(str){
- if(serverMessageReceiveHook_){serverMessageReceiveHook_(str);}
- if(hookServerMessageReceive){hookServerMessageReceive(str);}
-}
-
-/*can use preventDefault()*/
-deathHook = function(attacker , victim){
- if(deathHook_){deathHook_(attacker , victim);}
- if(hookDeath){hookDeath(attacker , victim);}
-}
-
-/*can use preventDefault()*/
-playerAddExpHook = function(player , experienceAdded){
- if(playerAddExpHook_){playerAddExpHook_(player , experienceAdded);}
- if(hookPlayerAddExp){hookPlayerAddExp(player , experienceAdded);}
-}
-
-/*can use preventDefault()*/
-playerExpLevelChangeHook = function(player , levelsAdded){
- if(playerExpLevelChangeHook_){playerExpLevelChangeHook_(player , levelsAdded);}
- if(hookPlayerExpLevelChange){hookPlayerExpLevelChange(player , levelsAdded);}
-}
-
-redstoneUpdateHook = function(x , y , z , newCurrent , someBooleanIDontKnow , blockId , blockData){
- if(redstoneUpdateHook_){redstoneUpdateHook_(x , y , z , newCurrent , someBooleanIDontKnow , blockId , blockData);}
- if(hookRedstoneUpdate){hookRedstoneUpdate(x , y , z , newCurrent , someBooleanIDontKnow , blockId , blockData);}
-}
-
-newLevel = function(){
- if(newLevel_){newLevel_();}
- if(hookNewLevel){hookNewLevel();}
-}
-
-/*can use preventDefault()*/
-startDestroyBlock = function(x , y , z , side){
- if(startDestroyBlock_){startDestroyBlock_(x , y , z , side);}
- if(hookStartDestroyBlock){hookStartDestroyBlock(x , y , z , side);}
- currentItemId = ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")();
- currentItemData = ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItemData")();
- 当前手持物品�?= ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getSelectedSlotId")();
- enchantments = ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getEnchantments")(当前手持物品�?; 
- if(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() == CustomTools[0][currentItemId]){
-  API.setToolDestroyTime_Pickaxe(6.0);
- }
- if(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() == CustomTools[1][currentItemId]){
-  API.setToolDestroyTime_Axe(6.0);
- }
- if(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() == CustomTools[2][currentItemId]){
-  API.setToolDestroyTime_Shovel(6.0);
- }
- if(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() == CustomTools[3][currentItemId]){
-  API.setToolDestroyTime_Shears(6.0);
- }
-}
-
-projectileHitBlockHook = function(projectile , blockX , blockY , blockZ , side){
- if(projectileHitBlockHook_){projectileHitBlockHook_(projectile , blockX , blockY , blockZ , side);}
- if(hookProjectileHitBlock){hookProjectileHitBlock(projectile , blockX , blockY , blockZ , side);}
-}
-
-modTick = function(){
- if(modTick_){modTick_();}
- if(hookModTick){hookModTick();}
- currentItemId = ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")();
- currentItemData = ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItemData")();
- 当前手持物品�?= ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getSelectedSlotId")();
- enchantments = ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getEnchantments")(当前手持物品�?;
- if(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() !== CustomTools[0][currentItemId]){
-  API.setToolDestroyTime_Pickaxe(1.0);
- }
- if(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() !== CustomTools[1][currentItemId]){
-  API.setToolDestroyTime_Axe(1.0);
- }
- if(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() !== CustomTools[2][currentItemId]){
-  API.setToolDestroyTime_Shovel(1.0);
- }
- if(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() !== CustomTools[3][currentItemId]){
-  API.setToolDestroyTime_Shears(1.0);
- }
- if(tempToolId){
-  //if(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() == VanillaToolIDs[0][0] || ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() == VanillaToolIDs[0][1] || ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() == VanillaToolIDs[0][2] || ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() == VanillaToolIDs[0][3] || ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() == VanillaToolIDs[0][4]){
-  if(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() == VanillaToolIDs[currentItemId]){
-   ForgottenCraft(BloodWolf[_ForgottenCraft4Function_] , "setCarriedItem")(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getEntity")() , tempToolId[0] , 1 , tempToolId[1] + 1);
-   for(ench = 0; ench < enchantments["length"]; ench++){
-    ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "enchant")(目前手持物品�?, enchantments[附魔].type , enchantments[附魔].level);
-   }
-   tempToolId = null;
-  }
- }
- /*ModPE["showTipMessage"](
-  "\n当前所指方块ID: " + Player["getPointedBlockId"]()
-  + "\n当前所指方块特殊�? " + Player["getPointedBlockData"]()
-  + "\n当前手持物品ID: " + Player["getCarriedItem"]()
-  + "\n当前手持物品特殊�? " + Player["getCarriedItemData"]()
-  + "\n当前所指生物类型ID: " + Entity["getEntityTypeId"](Player["getPointedEntity"]())
-  + "\n当前所指生物模型ID: " + Entity["getRenderType"](Player["getPointedEntity"]())
-  + "\n当前所指生物的皮肤路径: " + Entity["getMobSkin"](Player["getPointedEntity"]())
-  + "\n"
- );
- ModPE["showTipMessage"](
-  "\n当前玩家X�? " + getPlayerX()
-  + "\n当前玩家Y�? " + getPlayerY()
-  + "\n当前玩家Z�? " + getPlayerZ()
-  + "\n当前玩家横向视角: " + getYaw(getPlayerEnt())
-  + "\n当前玩家纵向视角: " + getPitch(getPlayerEnt())
-  + "\n"
- );*/
-}
-
-/*can use preventDefault()*/
-useItem = function(x , y , z , itemid , blockid , side , itemDamage , blockDamage){
- if(useItem_){useItem_(x , y , z , itemid , blockid , side , itemDamage , blockDamage);}
- if(hookUseItem){hookUseItem(x , y , z , itemid , blockid , side , itemDamage , blockDamage);}
-}
+useItem = function (x, y, z, itemId, blockId, side, itemDamage, blockDamage) {
+  if (useItem_) useItem_(x, y, z, itemId, blockId, side, itemDamage, blockDamage);
+  if (hookUseItem) hookUseItem(x, y, z, itemId, blockId, side, itemDamage, blockDamage);
+};
