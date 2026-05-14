@@ -1,147 +1,24 @@
-﻿var ForgottenCraftFunction = [];
+/**
+ * ForgottenCraft API - 核心模块
+ * 作者: 我的世界之血狼 (QQ: 1366329192)
+ *
+ * 提供自定义物品/方块注册、工具速度修正、矿石生成、文件读写等功能。
+ * 依赖: constants.js, hooks.js, state.js (由 main.js 按顺序加载)
+ */
 
-BloodWolf = [ForgottenCraftFunction , ModPE , Level , Player , Entity , Item , Block , Server];
-_ForgottenCraft0Function_ = 0;
-_ForgottenCraft1Function_ = 1;
-_ForgottenCraft2Function_ = 2;
-_ForgottenCraft3Function_ = 3;
-_ForgottenCraft4Function_ = 4;
-_ForgottenCraft5Function_ = 5;
-_ForgottenCraft6Function_ = 6;
+// ========================= 命名空间初始化 =========================
 
-ForgottenCraft = function(_Forgotten0Craft_ , _Forgotten1Craft_){
- return _Forgotten0Craft_[_Forgotten1Craft_];
-}
+var ForgottenCraftAPI = [];
 
-// ========================= 常量定义 =========================
-
-var ItemType_Item = 0;
-var ItemType_Tool = 1;
-
-var TOOL_PICKAXE = 0;
-var TOOL_AXE     = 1;
-var TOOL_SHOVEL  = 2;
-var TOOL_SWORD   = 3;
-
-var ITEM_DECO_STACK64    = 0;
-var ITEM_DECO_STACK16    = 1;
-var ITEM_MATERIAL_STACK64 = 2;
-var ITEM_MATERIAL_STACK16 = 3;
-
-/*---------------------------------------------*/
-/*---------------------------------------------*/
-/*__尊重他人劳动成果，禁止抄袭__*/
-/*---------------------------------------------*/
-/*---------------------------------------------*/
-/*__如果你需要我的源码，可以找我要__*/
-/*__作者我的百度贴吧用户名:我的世界之血狼__*/
-/*__作者我的QQ:1366329192__*/
-/*__请注明来�?�?我想知道ModPE(加上ModPE名字)的源码__*/
-/*---------------------------------------------*/
-/*---------------------------------------------*/
-/*__如果你能从我的源码这里改进了一些算法或者灵感或者其他什么的__*/
-/*__我会很为你高兴的__*/
-/*__但是请你在发布你自己的ModPE的时候注明作者__*/
-/*__谢谢__*/
-/*---------------------------------------------*/
-/*---------------------------------------------*/
-
-/*Variable*/
-RegisteredItems = [];
-Unused_Speed = [];
-Tools = [[] , [] , [] , []];
-VanillaToolIDs = [[270 , 274 , 257 , 278 , 285] , [271 , 275 , 258 , 279 , 286] , [269 , 273 , 256 , 277 , 284] , [268 , 272 , 267 , 276 , 283]];
-for(Tool_ID = 0; Tool_ID <= 5; ++ Tool_ID){
- VanillaToolIDs[VanillaToolIDs[0][Tool_ID]] = VanillaToolIDs[0][Tool_ID];
- VanillaToolIDs[VanillaToolIDs[1][Tool_ID]] = VanillaToolIDs[1][Tool_ID];
- VanillaToolIDs[VanillaToolIDs[2][Tool_ID]] = VanillaToolIDs[2][Tool_ID];
- VanillaToolIDs[VanillaToolIDs[3][Tool_ID]] = VanillaToolIDs[3][Tool_ID];
-}
-
-var ItemType_Item;// = 0;
-var ItemType_Tool;// = 1;
-
-var tempToolId = null;
-
-var EnchantType_weapon = EnchantType["weapon"];
-var EnchantType_bow = EnchantType["bow"];
-var EnchantType_hoe = EnchantType["hoe"];
-var EnchantType_shears = EnchantType["shears"];
-var 附魔类型_打火�?= EnchantType["flintAndSteel"];
-var EnchantType_axe = EnchantType["axe"];
-var EnchantType_pickaxe = EnchantType["pickaxe"];
-var EnchantType_shovel = EnchantType["shovel"];
-var EnchantType_fishingRod = EnchantType["fishingRod"];
-var EnchantType_book = EnchantType["book"];
-
-var Enchantment_AQUA_AFFINITY = Enchantment["AQUA_AFFINITY"];
-var 附魔属性_节肢杀�?= Enchantment["BANE_OF_ARTHROPODS"];
-var Enchantment_BLAST_PROTECTION = Enchantment["BLAST_PROTECTION"];
-var 附魔属性_海洋探索�?= Enchantment["DEPTH_STRIDER"];
-var Enchantment_EFFICIENCY = Enchantment["EFFICIENCY"];
-var Enchantment_FEATHER_FALLING = Enchantment["FEATHER_FALLING"];
-var Enchantment_FIRE_ASPECT = Enchantment["FIRE_ASPECT"];
-var Enchantment_FIRE_PROTECTION = Enchantment["FIRE_PROTECTION"];
-var Enchantment_FLAME = Enchantment["FLAME"];
-var Enchantment_FORTUNE = Enchantment["FORTUNE"];
-var Enchantment_INFINITY = Enchantment["INFINITY"];
-var Enchantment_KNOCKBACK = Enchantment["KNOCKBACK"];
-var Enchantment_LOOTING = Enchantment["LOOTING"];
-var Enchantment_LUCK_OF_THE_SEA = Enchantment["LUCK_OF_THE_SEA"];
-var Enchantment_LURE = Enchantment["LURE"];
-var Enchantment_POWER = Enchantment["POWER"];
-var Enchantment_PROJECTILE_PROTECTION = Enchantment["PROJECTILE_PROTECTION"];
-var Enchantment_PROTECTION = Enchantment["PROTECTION"];
-var Enchantment_PUNCH = Enchantment["PUNCH"];
-var Enchantment_RESPIRATION = Enchantment["RESPIRATION"];
-var Enchantment_SHARPNESS = Enchantment["SHARPNESS"];
-var Enchantment_SILK_TOUCH = Enchantment["SILK_TOUCH"];
-var 附魔属性_灵亡杀�?= Enchantment["SMITE"];
-var Enchantment_THORNS = Enchantment["THORNS"];
-var Enchantment_UNBREAKING = Enchantment["UNBREAKING"];
-
-attackHook_ = null;
-chatHook_ = null;
-continueDestroyBlock_ = null;
-destroyBlock_ = null;
-projectileHitEntityHook_ = null;
-eatHook_ = null;
-entityAddedHook_ = null;
-entityHurtHook_ = null;
-entityRemovedHook_ = null;
-explodeHook_ = null;
-serverMessageReceiveHook_ = null;
-deathHook_ = null;
-playerAddExpHook_ = null;
-playerExpLevelChangeHook_ = null;
-redstoneUpdateHook_ = null;
-newLevel_ = null;
-startDestroyBlock_ = null;
-projectileHitBlockHook_ = null;
-modTick_ = null;
-useItem_ = null;
-
-hookAttack = null;
-hookChat = null;
-hookContinueDestroyBlock = null;
-hookDestroyBlock = null;
-hookProjectileHitEntity = null;
-hookEat = null;
-hookEntityAdded = null;
-hookEntityHurt = null;
-hookEntityRemoved = null;
-hookExplode = null;
-hookServerMessageReceive = null;
-hookDeath = null;
-hookPlayerAddExp = null;
-hookPlayerExpLevelChange = null;
-hookRedstoneUpdate = null;
-hookNewLevel = null;
-hookStartDestroyBlock = null;
-hookProjectileHitBlock = null;
-hookModTick = null;
-hookUseItem = null;
-
+/**
+ * 全局命名空间
+ * [0] ForgottenCraftAPI  [1] ModPE      [2] Level    [3] Player
+ * [4] Entity             [5] Item       [6] Block    [7] Server
+ */
+var ForgottenCraft = [
+  ForgottenCraftAPI, ModPE, Level, Player,
+  Entity, Item, Block, Server,
+];
 
 // ========================= API 便捷访问 =========================
 
@@ -184,6 +61,17 @@ function setBlockDestroyTimes(blocks, speed) {
     _Block.setDestroyTime(blocks[i][0], blocks[i][1] / speed);
   }
 }
+
+// ========================= 核心 API 函数 =========================
+
+/**
+ * 注册自定义物品或工具。
+ * @param {number} id - 物品 ID
+ * @param {Array} texture - [材质名, 材质特殊值]
+ * @param {string} name - 显示名称
+ * @param {Array} type - [物品类型, 子类型]
+ * @param {number} [maxDamage] - 工具最大耐久
+ */
 API.setItem = function (id, texture, name, type, maxDamage) {
   if (type[0] === ItemType_Item) {
     var stackSize, category;
@@ -223,42 +111,6 @@ API.setItem = function (id, texture, name, type, maxDamage) {
 
 // ========================= 工具速度修正 =========================
 
-var PICKAXE_BLOCKS = [
-  [1, 7.5], [4, 10], [14, 15], [15, 15], [16, 15],
-  [21, 15], [22, 15], [23, 17.5], [24, 4],
-  [41, 15], [42, 25], [43, 10], [44, 10], [45, 10],
-  [48, 7.5], [49, 250], [52, 25],
-  [56, 15], [57, 15], [61, 17.5], [62, 17.5],
-  [67, 10], [71, 25], [73, 15], [74, 15],
-  [87, 2], [98, 7.5], [101, 25],
-  [108, 10], [109, 10], [112, 10], [113, 10], [114, 10],
-  [116, 25], [118, 10], [121, 15], [125, 17.5],
-  [129, 15], [139, 15], [145, 25], [152, 25],
-  [153, 15], [154, 15], [155, 4], [156, 4],
-  [159, 6.25], [172, 6.25], [173, 15]
-];
-
-var AXE_BLOCKS = [
-  [5, 3], [17, 3], [18, 0.35], [47, 2.25],
-  [53, 3], [54, 3.75], [58, 3.75],
-  [63, 1.5], [64, 4.5], [65, 0.65], [68, 1.5],
-  [85, 3], [96, 4.5], [103, 1.5], [107, 3],
-  [134, 3], [135, 3], [136, 3],
-  [157, 3], [158, 3], [161, 0.35], [162, 3],
-  [163, 3], [164, 3],
-  [183, 4], [184, 4], [185, 4], [186, 4], [187, 4]
-];
-
-var SHOVEL_BLOCKS = [
-  [2, 0.9], [3, 0.75], [12, 0.75], [13, 0.9],
-  [78, 0.5], [80, 1], [82, 0.9], [88, 0.75],
-  [110, 0.9], [198, 0.9], [243, 0.9]
-];
-
-var SHEAR_BLOCKS = [
-  [30, 20]
-];
-
 API.setToolDestroyTime_Pickaxe = function (speed) {
   setBlockDestroyTimes(PICKAXE_BLOCKS, speed * 20);
 };
@@ -277,24 +129,21 @@ API.setToolDestroyTime_Shears = function (speed) {
 
 // ========================= 矿石生成 =========================
 
-var VEIN_SHAPES = [
-  [[1,0,0],[0,0,1],[1,0,1],[0,1,0],[1,-1,1]],
-  [[-1,0,0],[0,0,-1],[-1,0,-1],[0,-1,0],[-1,-1,0],[0,-1,-1],[-1,-1,-1]],
-  [[0,-1,0],[1,-1,0],[0,-1,1]],
-  [[1,0,0],[0,-1,0]],
-  [[-1,0,0],[0,0,-1],[0,-1,0],[-1,-1,0],[0,-1,-1],[-1,-1,-1]]
-];
-
 function generateOreDirection(blockId, blockData, veinCount, maxHeight, replaceBlock, dirX, dirZ) {
   var veinSize = 0;
   veinSize++;
   var veinType = 0;
-  for (var r = 0; r < 6; r++) { veinType += Math.round(Math.random()); }
+  for (var r = 0; r < 6; r++) {
+    veinType += Math.round(Math.random());
+  }
   var x = getPlayerX() + dirX * Math.random() * 256;
   var y = Math.random() * maxHeight;
   var z = getPlayerZ() + dirZ * Math.random() * 256;
   if (Level.getTile(x, y, z) !== replaceBlock) return;
-  if (veinSize > veinCount) { veinSize = 0; return; }
+  if (veinSize > veinCount) {
+    veinSize = 0;
+    return;
+  }
   Level.setTile(x, y, z, blockId, blockData);
   if (veinType >= 0 && veinType < VEIN_SHAPES.length) {
     var shape = VEIN_SHAPES[veinType];
@@ -305,9 +154,9 @@ function generateOreDirection(blockId, blockData, veinCount, maxHeight, replaceB
 }
 
 API.generateOre = function (blockId, blockData, veinCount, maxHeight, replaceBlock) {
-  generateOreDirection(blockId, blockData, veinCount, maxHeight, replaceBlock,  1,  1);
-  generateOreDirection(blockId, blockData, veinCount, maxHeight, replaceBlock,  1, -1);
-  generateOreDirection(blockId, blockData, veinCount, maxHeight, replaceBlock, -1,  1);
+  generateOreDirection(blockId, blockData, veinCount, maxHeight, replaceBlock, 1, 1);
+  generateOreDirection(blockId, blockData, veinCount, maxHeight, replaceBlock, 1, -1);
+  generateOreDirection(blockId, blockData, veinCount, maxHeight, replaceBlock, -1, 1);
   generateOreDirection(blockId, blockData, veinCount, maxHeight, replaceBlock, -1, -1);
 };
 
@@ -324,7 +173,7 @@ API.saveData = function (path, content) {
     writer.write(content);
     writer.close();
   } catch (e) {
-    print("[ForgottenCraft] 写入失败: " + e);
+    print("[ForgottenCraft] write error: " + e);
   }
 };
 
@@ -348,9 +197,9 @@ attackHook = function (attacker, victim) {
   if (attackHook_) attackHook_(attacker, victim);
   if (hookAttack) hookAttack(attacker, victim);
   swapToVanillaTool(TOOL_PICKAXE, 278);
-  swapToVanillaTool(TOOL_AXE,     279);
-  swapToVanillaTool(TOOL_SHOVEL,  277);
-  swapToVanillaTool(TOOL_SWORD,   276);
+  swapToVanillaTool(TOOL_AXE, 279);
+  swapToVanillaTool(TOOL_SHOVEL, 277);
+  swapToVanillaTool(TOOL_SWORD, 276);
 };
 
 chatHook = function (str) {
@@ -367,9 +216,9 @@ destroyBlock = function (x, y, z, side) {
   if (destroyBlock_) destroyBlock_(x, y, z, side);
   if (hookDestroyBlock) hookDestroyBlock(x, y, z, side);
   swapToVanillaTool(TOOL_PICKAXE, 278);
-  swapToVanillaTool(TOOL_AXE,     279);
-  swapToVanillaTool(TOOL_SHOVEL,  277);
-  swapToVanillaTool(TOOL_SWORD,   276);
+  swapToVanillaTool(TOOL_AXE, 279);
+  swapToVanillaTool(TOOL_SHOVEL, 277);
+  swapToVanillaTool(TOOL_SWORD, 276);
 };
 
 projectileHitEntityHook = function (projectile, targetEntity) {
@@ -437,9 +286,9 @@ startDestroyBlock = function (x, y, z, side) {
   if (hookStartDestroyBlock) hookStartDestroyBlock(x, y, z, side);
   var carriedId = _Player.getCarriedItem();
   if (carriedId === CustomTools[TOOL_PICKAXE][carriedId]) API.setToolDestroyTime_Pickaxe(6.0);
-  if (carriedId === CustomTools[TOOL_AXE][carriedId])     API.setToolDestroyTime_Axe(6.0);
-  if (carriedId === CustomTools[TOOL_SHOVEL][carriedId])  API.setToolDestroyTime_Shovel(6.0);
-  if (carriedId === CustomTools[TOOL_SWORD][carriedId])   API.setToolDestroyTime_Shears(6.0);
+  if (carriedId === CustomTools[TOOL_AXE][carriedId]) API.setToolDestroyTime_Axe(6.0);
+  if (carriedId === CustomTools[TOOL_SHOVEL][carriedId]) API.setToolDestroyTime_Shovel(6.0);
+  if (carriedId === CustomTools[TOOL_SWORD][carriedId]) API.setToolDestroyTime_Shears(6.0);
 };
 
 projectileHitBlockHook = function (projectile, blockX, blockY, blockZ, side) {
@@ -455,9 +304,9 @@ modTick = function () {
   var slotId = _Player.getSelectedSlotId();
   var enchList = _Player.getEnchantments(slotId);
   if (carriedId !== CustomTools[TOOL_PICKAXE][carriedId]) API.setToolDestroyTime_Pickaxe(1.0);
-  if (carriedId !== CustomTools[TOOL_AXE][carriedId])     API.setToolDestroyTime_Axe(1.0);
-  if (carriedId !== CustomTools[TOOL_SHOVEL][carriedId])  API.setToolDestroyTime_Shovel(1.0);
-  if (carriedId !== CustomTools[TOOL_SWORD][carriedId])   API.setToolDestroyTime_Shears(1.0);
+  if (carriedId !== CustomTools[TOOL_AXE][carriedId]) API.setToolDestroyTime_Axe(1.0);
+  if (carriedId !== CustomTools[TOOL_SHOVEL][carriedId]) API.setToolDestroyTime_Shovel(1.0);
+  if (carriedId !== CustomTools[TOOL_SWORD][carriedId]) API.setToolDestroyTime_Shears(1.0);
   if (tempToolId) {
     if (carriedId === VanillaToolIDs[carriedId]) {
       _Entity.setCarriedItem(_Player.getEntity(), tempToolId[0], 1, tempToolId[1] + 1);
