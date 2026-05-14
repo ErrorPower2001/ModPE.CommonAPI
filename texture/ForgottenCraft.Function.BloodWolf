@@ -153,6 +153,37 @@ var _Entity = ForgottenCraft[4];
 var _Item = ForgottenCraft[5];
 var _Block = ForgottenCraft[6];
 var _Server = ForgottenCraft[7];
+
+// ========================= 内部辅助函数 =========================
+
+/**
+ * 将自定义工具临时替换为原版工具，以利用原版挖掘速度。
+ * @param {number} toolType - 工具类型 (0=pickaxe, 1=axe, 2=shovel, 3=sword)
+ * @param {number} vanillaId - 对应的原版工具 ID
+ */
+function swapToVanillaTool(toolType, vanillaId) {
+  var carriedId = _Player.getCarriedItem();
+  if (carriedId !== CustomTools[toolType][carriedId]) return;
+  var carriedData = _Player.getCarriedItemData();
+  var slotId = _Player.getSelectedSlotId();
+  var enchList = _Player.getEnchantments(slotId);
+  tempToolId = [carriedId, carriedData];
+  _Entity.setCarriedItem(_Player.getEntity(), vanillaId, 1, 0);
+  for (var i = 0; i < enchList.length; i++) {
+    _Player.enchant(slotId, enchList[i].type, enchList[i].level);
+  }
+}
+
+/**
+ * 批量设置方块挖掘时间。
+ * @param {Array} blocks - [[blockId, baseTime], ...]
+ * @param {number} speed - 速度乘数
+ */
+function setBlockDestroyTimes(blocks, speed) {
+  for (var i = 0; i < blocks.length; i++) {
+    _Block.setDestroyTime(blocks[i][0], blocks[i][1] / speed);
+  }
+}
 BloodWolf[_ForgottenCraft0Function_]["setItem"] = function(_Forgotten0Craft_ , _Forgotten1Craft_ , _Forgotten2Craft_ , _Forgotten3Craft_ , _Forgotten4Craft_){
  if(_Forgotten3Craft_[0] == ItemType_Item){
   if(_Forgotten3Craft_[1] == 0){
