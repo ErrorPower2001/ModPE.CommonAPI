@@ -29,7 +29,6 @@ RunTexturePackFile = function(_Forgotten0Craft_ , _Forgotten1Craft_){
   eval(new java["lang"]["String"](ModPE["getBytesFromTexturePack"](_Forgotten0Craft_ + ".BloodWolf") , "UTF-8") + "");
  }
 }
-RunTexturePackFile("ForgottenCraft.Function" , 0);
 RunTexturePackFile("ForgottenCraft.Function" , 1);
 
 if(! ForgottenCraft(BloodWolf[_ForgottenCraft0Function_] , "readData")("/sdcard/games/com.mojang/[ModPE]ForgottenCraft/[ModPE][API]ForgottenCraft.JS" , "UTF-8")){
