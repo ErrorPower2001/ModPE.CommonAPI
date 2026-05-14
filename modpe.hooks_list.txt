@@ -1,0 +1,17 @@
+useItem(x, y, z, itemId, blockId, side, itemDamage, blockDamage);
+destroyBlock(x, y, z, side);
+startDestroyBlock(x, y, z, side);
+newLevel(hasLevel);
+selectLevelHook();
+leaveGame();
+attackHook(attacker, victim);
+modTick();
+chatHook(text);
+procCmd(cmd);
+deathHook(attacker, victim);
+entityRemovedHook(entity);
+entityAddedHook(entity);
+levelEventHook(player, eventType, x, y, z, data);
+blockEventHook(x, y, z, type, data);
+serverMessageReceiveHook(str);
+chatReceiveHook(str, sender);

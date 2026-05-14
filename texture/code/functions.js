@@ -141,9 +141,9 @@ function generateOreDirection(
   for (var r = 0; r < 6; r++) {
     veinType += Math.round(Math.random());
   }
-  var x = getPlayerX() + dirX * Math.random() * 256;
-  var y = Math.random() * maxHeight;
-  var z = getPlayerZ() + dirZ * Math.random() * 256;
+  var x = Math.floor(getPlayerX() + dirX * Math.random() * 256);
+  var y = Math.floor(Math.random() * maxHeight);
+  var z = Math.floor(getPlayerZ() + dirZ * Math.random() * 256);
   if (Level.getTile(x, y, z) !== replaceBlock) return;
   if (veinSize > veinCount) {
     veinSize = 0;

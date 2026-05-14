@@ -152,9 +152,9 @@ redstoneUpdateHook = function (
     hookRedstoneUpdate(x, y, z, newCurrent, isWorldGen, blockId, blockData);
 };
 
-newLevel = function () {
-  if (newLevel_) newLevel_();
-  if (hookNewLevel) hookNewLevel();
+newLevel = function (hasLevel) {
+  if (newLevel_) newLevel_(hasLevel);
+  if (hookNewLevel) hookNewLevel(hasLevel);
 };
 
 startDestroyBlock = function (x, y, z, side) {

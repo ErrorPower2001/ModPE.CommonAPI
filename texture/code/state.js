@@ -23,7 +23,7 @@ var VanillaToolIDs = [
 ];
 
 for (var i = 0; i < VanillaToolIDs.length; i++) {
-  for (var j = 0; j < VanillaToolIDs[i].length; j++) {
+  for (var j = 0; j < 5; j++) {
     VanillaToolIDs[VanillaToolIDs[i][j]] = VanillaToolIDs[i][j];
   }
 }

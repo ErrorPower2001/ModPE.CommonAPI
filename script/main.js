@@ -56,7 +56,7 @@ var DEFAULT_CONFIG = [
   "",
   "/*redstoneUpdateHook_ = function(x, y, z, newCurrent, isWorldGen, blockId, blockData) {}*/",
   "",
-  "/*newLevel_ = function() {}*/",
+  "/*newLevel_ = function(hasLevel) {}*/",
   "",
   "/*startDestroyBlock_ = function(x, y, z, side) {}*/",
   "",
