@@ -1,5 +1,5 @@
-/**
- * ForgottenCraft API - 函数模块
+﻿/**
+ * CraftLib API - 函数模块
  * 作者: 我的世界之血狼 (QQ: 1366329192)
  *
  * 提供自定义物品/方块注册、工具速度修正、矿石生成、文件读写等功能。
@@ -222,7 +222,7 @@ API.saveData = function (path, content) {
     writer.write(content);
     writer.close();
   } catch (e) {
-    print("[ForgottenCraft] write error: " + e);
+    print("[CraftLib] write error: " + e);
   }
 };
 

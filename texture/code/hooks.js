@@ -1,5 +1,5 @@
-/**
- * ForgottenCraft API - 钩子模块
+﻿/**
+ * CraftLib API - 钩子模块
  * 用户扩展钩子声明、框架内部钩子声明、以及所有钩子实现。
  * 由 main.js 按顺序加载。
  *

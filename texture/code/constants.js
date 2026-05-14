@@ -1,5 +1,5 @@
-/**
- * ForgottenCraft API - 常量定义
+﻿/**
+ * CraftLib API - 常量定义
  * 物品类型、工具类型、附魔映射等常量。
  * 由 main.js 在其他模块之前加载。
  */

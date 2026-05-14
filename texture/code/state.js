@@ -1,5 +1,5 @@
-/**
- * ForgottenCraft API - 状态变量
+﻿/**
+ * CraftLib API - 状态变量
  * 工具注册表、原版工具 ID 查找表、方块挖掘数据等。
  * 由 main.js 在 Function.js 之前加载。
  */

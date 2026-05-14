@@ -1,4 +1,4 @@
-# AGENTS.md - ModPE.ForgottenCraft
+﻿# AGENTS.md - ModPE.CraftLib
 
 ## Project Overview
 
@@ -12,7 +12,7 @@ Minecraft ModPE (Pocket Edition) script/resource pack providing a convenience AP
 script/main.js          ← Entry point, loads modules in order
 texture/code/
   constants.js          ← Item/tool types, enchantment mappings
-  namespace.js          ← ForgottenCraft array + API aliases
+  namespace.js          ← CraftLib array + API aliases
   state.js              ← Tool registry, block data tables, vein shapes
   hooks.js              ← Hook declarations + implementations
   functions.js          ← Helper functions + all API functions
@@ -27,10 +27,10 @@ texture/images/         ← Textures for items, blocks, armor, mobs
 ## Namespace
 
 ```javascript
-ForgottenCraft = [ForgottenCraftAPI, ModPE, Level, Player, Entity, Item, Block, Server];
+CraftLib = [CraftLibAPI, ModPE, Level, Player, Entity, Item, Block, Server];
 ```
 
-Access: `API.setItem(...)` or `ForgottenCraft[0].setItem(...)`
+Access: `API.setItem(...)` or `CraftLib[0].setItem(...)`
 
 ## API Reference
 
@@ -59,4 +59,4 @@ Hooks have two extension points:
 
 Both are called if defined. Some support `preventDefault()`.
 
-User config: `/sdcard/games/com.mojang/[ModPE]ForgottenCraft/[ModPE][API]ForgottenCraft.JS`
+User config: `/sdcard/games/com.mojang/[ModPE]CraftLib/[ModPE][API]CraftLib.JS`

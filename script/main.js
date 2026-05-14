@@ -1,5 +1,5 @@
-/**
- * ForgottenCraft API - 入口文件
+﻿/**
+ * CraftLib API - 入口文件
  * 作者: 我的世界之血狼 (QQ: 1366329192)
  *
  * 此文件是 ModPE 脚本的入口点。
@@ -23,7 +23,7 @@ loadScript("code/functions.js");
 // ========================= 用户配置文件初始化 =========================
 
 var CONFIG_PATH =
-  "/sdcard/games/com.mojang/[ModPE]ForgottenCraft/[ModPE][API]ForgottenCraft.JS";
+  "/sdcard/games/com.mojang/[ModPE]CraftLib/[ModPE][API]CraftLib.JS";
 
 var DEFAULT_CONFIG = [
   "/*attackHook_ = function(attacker, victim) {}*/",
