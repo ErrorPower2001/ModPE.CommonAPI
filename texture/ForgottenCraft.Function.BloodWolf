@@ -121,27 +121,38 @@ projectileHitBlockHook_ = null;
 modTick_ = null;
 useItem_ = null;
 
-attackHook_BloodWolf = null;
-chatHook_BloodWolf = null;
-continueDestroyBlock_BloodWolf = null;
-destroyBlock_BloodWolf = null;
-projectileHitEntityHook_BloodWolf = null;
-eatHook_BloodWolf = null;
-entityAddedHook_BloodWolf = null;
-entityHurtHook_BloodWolf = null;
-entityRemovedHook_BloodWolf = null;
-explodeHook_BloodWolf = null;
-serverMessageReceiveHook_BloodWolf = null;
-deathHook_BloodWolf = null;
-playerAddExpHook_BloodWolf = null;
-playerExpLevelChangeHook_BloodWolf = null;
-redstoneUpdateHook_BloodWolf = null;
-newLevel_BloodWolf = null;
-startDestroyBlock_BloodWolf = null;
-projectileHitBlockHook_BloodWolf = null;
-modTick_BloodWolf = null;
-useItem_BloodWolf = null;
+hookAttack = null;
+hookChat = null;
+hookContinueDestroyBlock = null;
+hookDestroyBlock = null;
+hookProjectileHitEntity = null;
+hookEat = null;
+hookEntityAdded = null;
+hookEntityHurt = null;
+hookEntityRemoved = null;
+hookExplode = null;
+hookServerMessageReceive = null;
+hookDeath = null;
+hookPlayerAddExp = null;
+hookPlayerExpLevelChange = null;
+hookRedstoneUpdate = null;
+hookNewLevel = null;
+hookStartDestroyBlock = null;
+hookProjectileHitBlock = null;
+hookModTick = null;
+hookUseItem = null;
 
+
+// ========================= API 便捷访问 =========================
+
+var API = ForgottenCraft[0];
+var _ModPE = ForgottenCraft[1];
+var _Level = ForgottenCraft[2];
+var _Player = ForgottenCraft[3];
+var _Entity = ForgottenCraft[4];
+var _Item = ForgottenCraft[5];
+var _Block = ForgottenCraft[6];
+var _Server = ForgottenCraft[7];
 BloodWolf[_ForgottenCraft0Function_]["setItem"] = function(_Forgotten0Craft_ , _Forgotten1Craft_ , _Forgotten2Craft_ , _Forgotten3Craft_ , _Forgotten4Craft_){
  if(_Forgotten3Craft_[0] == ItemType_Item){
   if(_Forgotten3Craft_[1] == 0){
@@ -582,7 +593,7 @@ BloodWolf[_ForgottenCraft0Function_]["readData"] = function(_Forgotten0Craft_ , 
 /*can use preventDefault()*/
 attackHook = function(attacker , victim){
  if(attackHook_){attackHook_(attacker , victim);}
- if(attackHook_BloodWolf){attackHook_BloodWolf(attacker , victim);}
+ if(hookAttack){hookAttack(attacker , victim);}
  currentItemId = ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")();
  currentItemData = ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItemData")();
  目前手持物品�?= ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getSelectedSlotId")();
@@ -620,19 +631,19 @@ attackHook = function(attacker , victim){
 /*can use preventDefault()*/
 chatHook = function(str){
  if(chatHook_){chatHook_(str);}
- if(chatHook_BloodWolf){chatHook_BloodWolf(str);}
+ if(hookChat){hookChat(str);}
 }
 
 /*can use preventDefault()*/
 continueDestroyBlock = function(x , y , z , side , progress){
  if(continueDestroyBlock_){continueDestroyBlock_(x , y , z , side , progress);}
- if(continueDestroyBlock_BloodWolf){continueDestroyBlock_BloodWolf(x , y , z , side , progress);}
+ if(hookContinueDestroyBlock){hookContinueDestroyBlock(x , y , z , side , progress);}
 }
 
 /*can use preventDefault()*/
 destroyBlock = function(x , y , z , side){
  if(destroyBlock_){destroyBlock_(x , y , z , side);}
- if(destroyBlock_BloodWolf){destroyBlock_BloodWolf(x , y , z , side);}
+ if(hookDestroyBlock){hookDestroyBlock(x , y , z , side);}
  currentItemId = ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")();
  currentItemData = ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItemData")();
  目前手持物品�?= ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getSelectedSlotId")();
@@ -669,74 +680,74 @@ destroyBlock = function(x , y , z , side){
 
 projectileHitEntityHook = function(projectile , targetEntity){
  if(projectileHitEntityHook_){projectileHitEntityHook_(projectile , targetEntity);}
- if(projectileHitEntityHook_BloodWolf){projectileHitEntityHook_BloodWolf(projectile , targetEntity);}
+ if(hookProjectileHitEntity){hookProjectileHitEntity(projectile , targetEntity);}
 }
 
 eatHook = function(hearts , saturationRatio){
  if(eatHook_){eatHook_(hearts , saturationRatio);}
- if(eatHook_BloodWolf){eatHook_BloodWolf(hearts , saturationRatio);}
+ if(hookEat){hookEat(hearts , saturationRatio);}
 }
 
 entityAddedHook = function(entity){
  if(entityAddedHook_){entityAddedHook_(entity);}
- if(entityAddedHook_BloodWolf){entityAddedHook_BloodWolf(entity);}
+ if(hookEntityAdded){hookEntityAdded(entity);}
 }
 
 /*can use preventDefault()*/
 entityHurtHook = function(attacker , victim , halfhearts){
  if(entityHurtHook_){entityHurtHook_(attacker , victim , halfhearts);}
- if(entityHurtHook_BloodWolf){entityHurtHook_BloodWolf(attacker , victim , halfhearts);}
+ if(hookEntityHurt){hookEntityHurt(attacker , victim , halfhearts);}
 }
 
 entityRemovedHook = function(entity){
  if(entityRemovedHook_){entityRemovedHook_(entity);}
- if(entityRemovedHook_BloodWolf){entityRemovedHook_BloodWolf(entity);}
+ if(hookEntityRemoved){hookEntityRemoved(entity);}
 }
 
 /*can use preventDefault()*/
 explodeHook = function(entity , x , y , z , power , onFire){
  if(explodeHook_){explodeHook_(entity , x , y , z , power , onFire);}
- if(explodeHook_BloodWolf){explodeHook_BloodWolf(entity , x , y , z , power , onFire);}
+ if(hookExplode){hookExplode(entity , x , y , z , power , onFire);}
 }
 
 /*can use preventDefault()*/
 serverMessageReceiveHook = function(str){
  if(serverMessageReceiveHook_){serverMessageReceiveHook_(str);}
- if(serverMessageReceiveHook_BloodWolf){serverMessageReceiveHook_BloodWolf(str);}
+ if(hookServerMessageReceive){hookServerMessageReceive(str);}
 }
 
 /*can use preventDefault()*/
 deathHook = function(attacker , victim){
  if(deathHook_){deathHook_(attacker , victim);}
- if(deathHook_BloodWolf){deathHook_BloodWolf(attacker , victim);}
+ if(hookDeath){hookDeath(attacker , victim);}
 }
 
 /*can use preventDefault()*/
 playerAddExpHook = function(player , experienceAdded){
  if(playerAddExpHook_){playerAddExpHook_(player , experienceAdded);}
- if(playerAddExpHook_BloodWolf){playerAddExpHook_BloodWolf(player , experienceAdded);}
+ if(hookPlayerAddExp){hookPlayerAddExp(player , experienceAdded);}
 }
 
 /*can use preventDefault()*/
 playerExpLevelChangeHook = function(player , levelsAdded){
  if(playerExpLevelChangeHook_){playerExpLevelChangeHook_(player , levelsAdded);}
- if(playerExpLevelChangeHook_BloodWolf){playerExpLevelChangeHook_BloodWolf(player , levelsAdded);}
+ if(hookPlayerExpLevelChange){hookPlayerExpLevelChange(player , levelsAdded);}
 }
 
 redstoneUpdateHook = function(x , y , z , newCurrent , someBooleanIDontKnow , blockId , blockData){
  if(redstoneUpdateHook_){redstoneUpdateHook_(x , y , z , newCurrent , someBooleanIDontKnow , blockId , blockData);}
- if(redstoneUpdateHook_BloodWolf){redstoneUpdateHook_BloodWolf(x , y , z , newCurrent , someBooleanIDontKnow , blockId , blockData);}
+ if(hookRedstoneUpdate){hookRedstoneUpdate(x , y , z , newCurrent , someBooleanIDontKnow , blockId , blockData);}
 }
 
 newLevel = function(){
  if(newLevel_){newLevel_();}
- if(newLevel_BloodWolf){newLevel_BloodWolf();}
+ if(hookNewLevel){hookNewLevel();}
 }
 
 /*can use preventDefault()*/
 startDestroyBlock = function(x , y , z , side){
  if(startDestroyBlock_){startDestroyBlock_(x , y , z , side);}
- if(startDestroyBlock_BloodWolf){startDestroyBlock_BloodWolf(x , y , z , side);}
+ if(hookStartDestroyBlock){hookStartDestroyBlock(x , y , z , side);}
  currentItemId = ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")();
  currentItemData = ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItemData")();
  当前手持物品�?= ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getSelectedSlotId")();
@@ -757,12 +768,12 @@ startDestroyBlock = function(x , y , z , side){
 
 projectileHitBlockHook = function(projectile , blockX , blockY , blockZ , side){
  if(projectileHitBlockHook_){projectileHitBlockHook_(projectile , blockX , blockY , blockZ , side);}
- if(projectileHitBlockHook_BloodWolf){projectileHitBlockHook_BloodWolf(projectile , blockX , blockY , blockZ , side);}
+ if(hookProjectileHitBlock){hookProjectileHitBlock(projectile , blockX , blockY , blockZ , side);}
 }
 
 modTick = function(){
  if(modTick_){modTick_();}
- if(modTick_BloodWolf){modTick_BloodWolf();}
+ if(hookModTick){hookModTick();}
  currentItemId = ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")();
  currentItemData = ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItemData")();
  当前手持物品�?= ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getSelectedSlotId")();
@@ -812,5 +823,5 @@ modTick = function(){
 /*can use preventDefault()*/
 useItem = function(x , y , z , itemid , blockid , side , itemDamage , blockDamage){
  if(useItem_){useItem_(x , y , z , itemid , blockid , side , itemDamage , blockDamage);}
- if(useItem_BloodWolf){useItem_BloodWolf(x , y , z , itemid , blockid , side , itemDamage , blockDamage);}
+ if(hookUseItem){hookUseItem(x , y , z , itemid , blockid , side , itemDamage , blockDamage);}
 }
