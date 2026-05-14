@@ -184,63 +184,42 @@ function setBlockDestroyTimes(blocks, speed) {
     _Block.setDestroyTime(blocks[i][0], blocks[i][1] / speed);
   }
 }
-BloodWolf[_ForgottenCraft0Function_]["setItem"] = function(_Forgotten0Craft_ , _Forgotten1Craft_ , _Forgotten2Craft_ , _Forgotten3Craft_ , _Forgotten4Craft_){
- if(_Forgotten3Craft_[0] == ItemType_Item){
-  if(_Forgotten3Craft_[1] == 0){
-   ForgottenCraft(BloodWolf[_ForgottenCraft1Function_] , "setItem")(_Forgotten0Craft_ , _Forgotten1Craft_[0] , _Forgotten1Craft_[1] , _Forgotten2Craft_ , 64);
-   ForgottenCraft(BloodWolf[_ForgottenCraft5Function_] , "setCategory")(_Forgotten0Craft_ , 2 , 0);
-   ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "addItemCreativeInv")(_Forgotten0Craft_ , 64 , 0);
+API.setItem = function (id, texture, name, type, maxDamage) {
+  if (type[0] === ItemType_Item) {
+    var stackSize, category;
+    switch (type[1]) {
+      case ITEM_DECO_STACK64:     stackSize = 64; category = 2; break;
+      case ITEM_DECO_STACK16:     stackSize = 16; category = 2; break;
+      case ITEM_MATERIAL_STACK64: stackSize = 64; category = 4; break;
+      case ITEM_MATERIAL_STACK16: stackSize = 16; category = 4; break;
+      default: return;
+    }
+    _ModPE.setItem(id, texture[0], texture[1], name, stackSize);
+    _Item.setCategory(id, category, 0);
+    _Player.addItemCreativeInv(id, stackSize, 0);
+    _Item.setHandEquipped(id, false);
   }
-  if(_Forgotten3Craft_[1] == 1){
-   ForgottenCraft(BloodWolf[_ForgottenCraft1Function_] , "setItem")(_Forgotten0Craft_ , _Forgotten1Craft_[0] , _Forgotten1Craft_[1] , _Forgotten2Craft_ , 16);
-   ForgottenCraft(BloodWolf[_ForgottenCraft5Function_] , "setCategory")(_Forgotten0Craft_ , 2 , 0);
-   ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "addItemCreativeInv")(_Forgotten0Craft_ , 16 , 0);
+
+  if (type[0] === ItemType_Tool) {
+    var enchantType;
+    switch (type[1]) {
+      case TOOL_PICKAXE: enchantType = EnchantType_pickaxe; break;
+      case TOOL_AXE:     enchantType = EnchantType_axe;     break;
+      case TOOL_SHOVEL:  enchantType = EnchantType_shovel;  break;
+      case TOOL_SWORD:   enchantType = EnchantType_weapon;  break;
+      default: return;
+    }
+    _ModPE.setItem(id, texture[0], texture[1], name, 1);
+    _Item.setEnchantType(id, enchantType, 1);
+    _Item.setHandEquipped(id, true);
+    _Item.setCategory(id, 3, 0);
+    _Player.addItemCreativeInv(id, 1, 0);
+    _Item.setMaxDamage(id, maxDamage);
+    CustomTools[type[1]][id] = id;
   }
-  if(_Forgotten3Craft_[1] == 2){
-   ForgottenCraft(BloodWolf[_ForgottenCraft1Function_] , "setItem")(_Forgotten0Craft_ , _Forgotten1Craft_[0] , _Forgotten1Craft_[1] , _Forgotten2Craft_ , 64);
-   ForgottenCraft(BloodWolf[_ForgottenCraft5Function_] , "setCategory")(_Forgotten0Craft_ , 4 , 0);
-   ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "addItemCreativeInv")(_Forgotten0Craft_ , 64 , 0);
-  }
-  if(_Forgotten3Craft_[1] == 3){
-   ForgottenCraft(BloodWolf[_ForgottenCraft1Function_] , "setItem")(_Forgotten0Craft_ , _Forgotten1Craft_[0] , _Forgotten1Craft_[1] , _Forgotten2Craft_ , 16);
-   ForgottenCraft(BloodWolf[_ForgottenCraft5Function_] , "setCategory")(_Forgotten0Craft_ , 4 , 0);
-   ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "addItemCreativeInv")(_Forgotten0Craft_ , 16 , 0);
-  }
-  ForgottenCraft(BloodWolf[_ForgottenCraft5Function_] , "setHandEquipped")(_Forgotten0Craft_ , false);
- }
- if(_Forgotten3Craft_[0] == ItemType_Tool){
-  if(_Forgotten3Craft_[1] == 0){
-   ForgottenCraft(BloodWolf[_ForgottenCraft1Function_] , "setItem")(_Forgotten0Craft_ , _Forgotten1Craft_[0] , _Forgotten1Craft_[1] , _Forgotten2Craft_ , 1);
-   ForgottenCraft(BloodWolf[_ForgottenCraft5Function_] , "setEnchantType")(_Forgotten0Craft_ , EnchantType_pickaxe , 1);
-   CustomTools[0][_Forgotten0Craft_] = _Forgotten0Craft_;
-  }
-  if(_Forgotten3Craft_[1] == 1){
-   ForgottenCraft(BloodWolf[_ForgottenCraft1Function_] , "setItem")(_Forgotten0Craft_ , _Forgotten1Craft_[0] , _Forgotten1Craft_[1] , _Forgotten2Craft_ , 1);
-   ForgottenCraft(BloodWolf[_ForgottenCraft5Function_] , "setEnchantType")(_Forgotten0Craft_ , EnchantType_axe , 1);
-   CustomTools[1][_Forgotten0Craft_] = _Forgotten0Craft_;
-  }
-  if(_Forgotten3Craft_[1] == 2){
-   ForgottenCraft(BloodWolf[_ForgottenCraft1Function_] , "setItem")(_Forgotten0Craft_ , _Forgotten1Craft_[0] , _Forgotten1Craft_[1] , _Forgotten2Craft_ , 1);
-   ForgottenCraft(BloodWolf[_ForgottenCraft5Function_] , "setEnchantType")(_Forgotten0Craft_ , EnchantType_shovel , 1);
-   CustomTools[2][_Forgotten0Craft_] = _Forgotten0Craft_;
-  }
-  if(_Forgotten3Craft_[1] == 3){
-   ForgottenCraft(BloodWolf[_ForgottenCraft1Function_] , "setItem")(_Forgotten0Craft_ , _Forgotten1Craft_[0] , _Forgotten1Craft_[1] , _Forgotten2Craft_ , 1);
-   ForgottenCraft(BloodWolf[_ForgottenCraft5Function_] , "setEnchantType")(_Forgotten0Craft_ , EnchantType_weapon , 1);
-   CustomTools[3][_Forgotten0Craft_] = _Forgotten0Craft_;
-  }
-/*  if(_Forgotten3Craft_[1] == 4){
-   ForgottenCraft(BloodWolf[_ForgottenCraft1Function_] , "setItem")(_Forgotten0Craft_ , _Forgotten1Craft_[0] , _Forgotten1Craft_[1] , _Forgotten2Craft_ , 1);
-   ForgottenCraft(BloodWolf[_ForgottenCraft5Function_] , "setEnchantType")(_Forgotten0Craft_ , 附魔类型_ , 1);
-   CustomTools[4][_Forgotten0Craft_] = _Forgotten0Craft_;
-  }*/
-  ForgottenCraft(BloodWolf[_ForgottenCraft5Function_] , "setHandEquipped")(_Forgotten0Craft_ , true);
-  ForgottenCraft(BloodWolf[_ForgottenCraft5Function_] , "setCategory")(_Forgotten0Craft_ , 3 , 0);
-  ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "addItemCreativeInv")(_Forgotten0Craft_ , 1 , 0);
-  ForgottenCraft(BloodWolf[_ForgottenCraft5Function_] , "setMaxDamage")(_Forgotten0Craft_ , _Forgotten4Craft_);
- }
- RegisteredItems[_Forgotten0Craft_] = _Forgotten0Craft_;
-}
+
+  RegisteredItems[id] = id;
+};
 
 BloodWolf[_ForgottenCraft0Function_]["setToolDestroyBlockTime_0"] = function(_Forgotten0Craft_){
  _Forgotten1Craft_ = _Forgotten0Craft_*20;
