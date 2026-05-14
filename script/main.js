@@ -21,7 +21,8 @@ loadScript("code/Function.js");
 
 // ========================= 用户配置文件初始化 =========================
 
-var CONFIG_PATH = "/sdcard/games/com.mojang/[ModPE]ForgottenCraft/[ModPE][API]ForgottenCraft.JS";
+var CONFIG_PATH =
+  "/sdcard/games/com.mojang/[ModPE]ForgottenCraft/[ModPE][API]ForgottenCraft.JS";
 
 var DEFAULT_CONFIG = [
   "/*attackHook_ = function(attacker, victim) {}*/",

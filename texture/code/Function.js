@@ -16,8 +16,14 @@ var ForgottenCraftAPI = [];
  * [4] Entity             [5] Item       [6] Block    [7] Server
  */
 var ForgottenCraft = [
-  ForgottenCraftAPI, ModPE, Level, Player,
-  Entity, Item, Block, Server,
+  ForgottenCraftAPI,
+  ModPE,
+  Level,
+  Player,
+  Entity,
+  Item,
+  Block,
+  Server,
 ];
 
 // ========================= API 便捷访问 =========================
@@ -76,11 +82,24 @@ API.setItem = function (id, texture, name, type, maxDamage) {
   if (type[0] === ItemType_Item) {
     var stackSize, category;
     switch (type[1]) {
-      case ITEM_DECO_STACK64:     stackSize = 64; category = 2; break;
-      case ITEM_DECO_STACK16:     stackSize = 16; category = 2; break;
-      case ITEM_MATERIAL_STACK64: stackSize = 64; category = 4; break;
-      case ITEM_MATERIAL_STACK16: stackSize = 16; category = 4; break;
-      default: return;
+      case ITEM_DECO_STACK64:
+        stackSize = 64;
+        category = 2;
+        break;
+      case ITEM_DECO_STACK16:
+        stackSize = 16;
+        category = 2;
+        break;
+      case ITEM_MATERIAL_STACK64:
+        stackSize = 64;
+        category = 4;
+        break;
+      case ITEM_MATERIAL_STACK16:
+        stackSize = 16;
+        category = 4;
+        break;
+      default:
+        return;
     }
     _ModPE.setItem(id, texture[0], texture[1], name, stackSize);
     _Item.setCategory(id, category, 0);
@@ -91,11 +110,20 @@ API.setItem = function (id, texture, name, type, maxDamage) {
   if (type[0] === ItemType_Tool) {
     var enchantType;
     switch (type[1]) {
-      case TOOL_PICKAXE: enchantType = EnchantType_pickaxe; break;
-      case TOOL_AXE:     enchantType = EnchantType_axe;     break;
-      case TOOL_SHOVEL:  enchantType = EnchantType_shovel;  break;
-      case TOOL_SWORD:   enchantType = EnchantType_weapon;  break;
-      default: return;
+      case TOOL_PICKAXE:
+        enchantType = EnchantType_pickaxe;
+        break;
+      case TOOL_AXE:
+        enchantType = EnchantType_axe;
+        break;
+      case TOOL_SHOVEL:
+        enchantType = EnchantType_shovel;
+        break;
+      case TOOL_SWORD:
+        enchantType = EnchantType_weapon;
+        break;
+      default:
+        return;
     }
     _ModPE.setItem(id, texture[0], texture[1], name, 1);
     _Item.setEnchantType(id, enchantType, 1);
@@ -129,7 +157,15 @@ API.setToolDestroyTime_Shears = function (speed) {
 
 // ========================= 矿石生成 =========================
 
-function generateOreDirection(blockId, blockData, veinCount, maxHeight, replaceBlock, dirX, dirZ) {
+function generateOreDirection(
+  blockId,
+  blockData,
+  veinCount,
+  maxHeight,
+  replaceBlock,
+  dirX,
+  dirZ,
+) {
   var veinSize = 0;
   veinSize++;
   var veinType = 0;
@@ -148,16 +184,60 @@ function generateOreDirection(blockId, blockData, veinCount, maxHeight, replaceB
   if (veinType >= 0 && veinType < VEIN_SHAPES.length) {
     var shape = VEIN_SHAPES[veinType];
     for (var s = 0; s < shape.length; s++) {
-      Level.setTile(x + shape[s][0], y + shape[s][1], z + shape[s][2], blockId, blockData);
+      Level.setTile(
+        x + shape[s][0],
+        y + shape[s][1],
+        z + shape[s][2],
+        blockId,
+        blockData,
+      );
     }
   }
 }
 
-API.generateOre = function (blockId, blockData, veinCount, maxHeight, replaceBlock) {
-  generateOreDirection(blockId, blockData, veinCount, maxHeight, replaceBlock, 1, 1);
-  generateOreDirection(blockId, blockData, veinCount, maxHeight, replaceBlock, 1, -1);
-  generateOreDirection(blockId, blockData, veinCount, maxHeight, replaceBlock, -1, 1);
-  generateOreDirection(blockId, blockData, veinCount, maxHeight, replaceBlock, -1, -1);
+API.generateOre = function (
+  blockId,
+  blockData,
+  veinCount,
+  maxHeight,
+  replaceBlock,
+) {
+  generateOreDirection(
+    blockId,
+    blockData,
+    veinCount,
+    maxHeight,
+    replaceBlock,
+    1,
+    1,
+  );
+  generateOreDirection(
+    blockId,
+    blockData,
+    veinCount,
+    maxHeight,
+    replaceBlock,
+    1,
+    -1,
+  );
+  generateOreDirection(
+    blockId,
+    blockData,
+    veinCount,
+    maxHeight,
+    replaceBlock,
+    -1,
+    1,
+  );
+  generateOreDirection(
+    blockId,
+    blockData,
+    veinCount,
+    maxHeight,
+    replaceBlock,
+    -1,
+    -1,
+  );
 };
 
 API.MineBeProduced = API.generateOre;
@@ -181,7 +261,10 @@ API.readData = function (path, encoding) {
   var file = new java.io.File(path);
   if (!file.exists() || !file.isFile()) return null;
   var result = "";
-  var reader = new java.io.InputStreamReader(new java.io.FileInputStream(file), encoding);
+  var reader = new java.io.InputStreamReader(
+    new java.io.FileInputStream(file),
+    encoding,
+  );
   var buffer = new java.io.BufferedReader(reader);
   var line;
   while ((line = buffer.readLine()) !== null) {
@@ -209,7 +292,8 @@ chatHook = function (str) {
 
 continueDestroyBlock = function (x, y, z, side, progress) {
   if (continueDestroyBlock_) continueDestroyBlock_(x, y, z, side, progress);
-  if (hookContinueDestroyBlock) hookContinueDestroyBlock(x, y, z, side, progress);
+  if (hookContinueDestroyBlock)
+    hookContinueDestroyBlock(x, y, z, side, progress);
 };
 
 destroyBlock = function (x, y, z, side) {
@@ -222,8 +306,10 @@ destroyBlock = function (x, y, z, side) {
 };
 
 projectileHitEntityHook = function (projectile, targetEntity) {
-  if (projectileHitEntityHook_) projectileHitEntityHook_(projectile, targetEntity);
-  if (hookProjectileHitEntity) hookProjectileHitEntity(projectile, targetEntity);
+  if (projectileHitEntityHook_)
+    projectileHitEntityHook_(projectile, targetEntity);
+  if (hookProjectileHitEntity)
+    hookProjectileHitEntity(projectile, targetEntity);
 };
 
 eatHook = function (hearts, saturationRatio) {
@@ -271,9 +357,19 @@ playerExpLevelChangeHook = function (player, levelsAdded) {
   if (hookPlayerExpLevelChange) hookPlayerExpLevelChange(player, levelsAdded);
 };
 
-redstoneUpdateHook = function (x, y, z, newCurrent, isWorldGen, blockId, blockData) {
-  if (redstoneUpdateHook_) redstoneUpdateHook_(x, y, z, newCurrent, isWorldGen, blockId, blockData);
-  if (hookRedstoneUpdate) hookRedstoneUpdate(x, y, z, newCurrent, isWorldGen, blockId, blockData);
+redstoneUpdateHook = function (
+  x,
+  y,
+  z,
+  newCurrent,
+  isWorldGen,
+  blockId,
+  blockData,
+) {
+  if (redstoneUpdateHook_)
+    redstoneUpdateHook_(x, y, z, newCurrent, isWorldGen, blockId, blockData);
+  if (hookRedstoneUpdate)
+    hookRedstoneUpdate(x, y, z, newCurrent, isWorldGen, blockId, blockData);
 };
 
 newLevel = function () {
@@ -285,15 +381,21 @@ startDestroyBlock = function (x, y, z, side) {
   if (startDestroyBlock_) startDestroyBlock_(x, y, z, side);
   if (hookStartDestroyBlock) hookStartDestroyBlock(x, y, z, side);
   var carriedId = _Player.getCarriedItem();
-  if (carriedId === CustomTools[TOOL_PICKAXE][carriedId]) API.setToolDestroyTime_Pickaxe(6.0);
-  if (carriedId === CustomTools[TOOL_AXE][carriedId]) API.setToolDestroyTime_Axe(6.0);
-  if (carriedId === CustomTools[TOOL_SHOVEL][carriedId]) API.setToolDestroyTime_Shovel(6.0);
-  if (carriedId === CustomTools[TOOL_SWORD][carriedId]) API.setToolDestroyTime_Shears(6.0);
+  if (carriedId === CustomTools[TOOL_PICKAXE][carriedId])
+    API.setToolDestroyTime_Pickaxe(6.0);
+  if (carriedId === CustomTools[TOOL_AXE][carriedId])
+    API.setToolDestroyTime_Axe(6.0);
+  if (carriedId === CustomTools[TOOL_SHOVEL][carriedId])
+    API.setToolDestroyTime_Shovel(6.0);
+  if (carriedId === CustomTools[TOOL_SWORD][carriedId])
+    API.setToolDestroyTime_Shears(6.0);
 };
 
 projectileHitBlockHook = function (projectile, blockX, blockY, blockZ, side) {
-  if (projectileHitBlockHook_) projectileHitBlockHook_(projectile, blockX, blockY, blockZ, side);
-  if (hookProjectileHitBlock) hookProjectileHitBlock(projectile, blockX, blockY, blockZ, side);
+  if (projectileHitBlockHook_)
+    projectileHitBlockHook_(projectile, blockX, blockY, blockZ, side);
+  if (hookProjectileHitBlock)
+    hookProjectileHitBlock(projectile, blockX, blockY, blockZ, side);
 };
 
 modTick = function () {
@@ -303,13 +405,22 @@ modTick = function () {
   var carriedData = _Player.getCarriedItemData();
   var slotId = _Player.getSelectedSlotId();
   var enchList = _Player.getEnchantments(slotId);
-  if (carriedId !== CustomTools[TOOL_PICKAXE][carriedId]) API.setToolDestroyTime_Pickaxe(1.0);
-  if (carriedId !== CustomTools[TOOL_AXE][carriedId]) API.setToolDestroyTime_Axe(1.0);
-  if (carriedId !== CustomTools[TOOL_SHOVEL][carriedId]) API.setToolDestroyTime_Shovel(1.0);
-  if (carriedId !== CustomTools[TOOL_SWORD][carriedId]) API.setToolDestroyTime_Shears(1.0);
+  if (carriedId !== CustomTools[TOOL_PICKAXE][carriedId])
+    API.setToolDestroyTime_Pickaxe(1.0);
+  if (carriedId !== CustomTools[TOOL_AXE][carriedId])
+    API.setToolDestroyTime_Axe(1.0);
+  if (carriedId !== CustomTools[TOOL_SHOVEL][carriedId])
+    API.setToolDestroyTime_Shovel(1.0);
+  if (carriedId !== CustomTools[TOOL_SWORD][carriedId])
+    API.setToolDestroyTime_Shears(1.0);
   if (tempToolId) {
     if (carriedId === VanillaToolIDs[carriedId]) {
-      _Entity.setCarriedItem(_Player.getEntity(), tempToolId[0], 1, tempToolId[1] + 1);
+      _Entity.setCarriedItem(
+        _Player.getEntity(),
+        tempToolId[0],
+        1,
+        tempToolId[1] + 1,
+      );
       for (var i = 0; i < enchList.length; i++) {
         _Player.enchant(slotId, enchList[i].type, enchList[i].level);
       }
@@ -319,6 +430,8 @@ modTick = function () {
 };
 
 useItem = function (x, y, z, itemId, blockId, side, itemDamage, blockDamage) {
-  if (useItem_) useItem_(x, y, z, itemId, blockId, side, itemDamage, blockDamage);
-  if (hookUseItem) hookUseItem(x, y, z, itemId, blockId, side, itemDamage, blockDamage);
+  if (useItem_)
+    useItem_(x, y, z, itemId, blockId, side, itemDamage, blockDamage);
+  if (hookUseItem)
+    hookUseItem(x, y, z, itemId, blockId, side, itemDamage, blockDamage);
 };
