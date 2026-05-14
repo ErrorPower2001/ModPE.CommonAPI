@@ -221,110 +221,59 @@ API.setItem = function (id, texture, name, type, maxDamage) {
   RegisteredItems[id] = id;
 };
 
-BloodWolf[_ForgottenCraft0Function_]["setToolDestroyBlockTime_0"] = function(_Forgotten0Craft_){
- _Forgotten1Craft_ = _Forgotten0Craft_*20;
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(1 , 7.5/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(4 , 10/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(14 , 15/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(15 , 15/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(16 , 15/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(21 , 15/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(22 , 15/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(23 , 17.5/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(24 , 4/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(41 , 15/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(42 , 25/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(43 , 10/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(44 , 10/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(45 , 10/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(48 , 7.5/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(49 , 250/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(52 , 25/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(56 , 15/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(57 , 15/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(61 , 17.5/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(62 , 17.5/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(67 , 10/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(71 , 25/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(73 , 15/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(74 , 15/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(87 , 2/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(98 , 7.5/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(101 , 25/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(108 , 10/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(109 , 10/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(112 , 10/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(113 , 10/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(114 , 10/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(116 , 25/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(118 , 10/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(121 , 15/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(125 , 17.5/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(129 , 15/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(139 , 15/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(145 , 25/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(152 , 25/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(153 , 15/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(154 , 15/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(155 , 4/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(156 , 4/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(159 , 6.25/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(172 , 6.25/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(173 , 15/_Forgotten1Craft_);
-}
+// ========================= 工具速度修正 =========================
 
-BloodWolf[_ForgottenCraft0Function_]["setToolDestroyBlockTime_1"] = function(_Forgotten0Craft_){
- _Forgotten1Craft_ = _Forgotten0Craft_;
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(5 , 3/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(17 , 3/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(18 , 0.35/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(47 , 2.25/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(53 , 3/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(54 , 3.75/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(58 , 3.75/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(63 , 1.5/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(64 , 4.5/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(65 , 0.65/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(68 , 1.5/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(85 , 3/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(96 , 4.5/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(103 , 1.5/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(107 , 3/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(134 , 3/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(135 , 3/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(136 , 3/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(157 , 3/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(158 , 3/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(161 , 0.35/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(162 , 3/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(163 , 3/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(164 , 3/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(183 , 4/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(184 , 4/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(185 , 4/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(186 , 4/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(187 , 4/_Forgotten1Craft_);
-}
+var PICKAXE_BLOCKS = [
+  [1, 7.5], [4, 10], [14, 15], [15, 15], [16, 15],
+  [21, 15], [22, 15], [23, 17.5], [24, 4],
+  [41, 15], [42, 25], [43, 10], [44, 10], [45, 10],
+  [48, 7.5], [49, 250], [52, 25],
+  [56, 15], [57, 15], [61, 17.5], [62, 17.5],
+  [67, 10], [71, 25], [73, 15], [74, 15],
+  [87, 2], [98, 7.5], [101, 25],
+  [108, 10], [109, 10], [112, 10], [113, 10], [114, 10],
+  [116, 25], [118, 10], [121, 15], [125, 17.5],
+  [129, 15], [139, 15], [145, 25], [152, 25],
+  [153, 15], [154, 15], [155, 4], [156, 4],
+  [159, 6.25], [172, 6.25], [173, 15]
+];
 
-BloodWolf[_ForgottenCraft0Function_]["setToolDestroyBlockTime_2"] = function(_Forgotten0Craft_){
- _Forgotten1Craft_ = _Forgotten0Craft_;
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(2 , 0.9/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(3 , 0.75/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(12 , 0.75/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(13 , 0.9/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(78 , 0.5/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(80 , 1/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(82 , 0.9/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(88 , 0.75/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(110 , 0.9/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(198 , 0.9/_Forgotten1Craft_);
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(243 , 0.9/_Forgotten1Craft_);
-}
+var AXE_BLOCKS = [
+  [5, 3], [17, 3], [18, 0.35], [47, 2.25],
+  [53, 3], [54, 3.75], [58, 3.75],
+  [63, 1.5], [64, 4.5], [65, 0.65], [68, 1.5],
+  [85, 3], [96, 4.5], [103, 1.5], [107, 3],
+  [134, 3], [135, 3], [136, 3],
+  [157, 3], [158, 3], [161, 0.35], [162, 3],
+  [163, 3], [164, 3],
+  [183, 4], [184, 4], [185, 4], [186, 4], [187, 4]
+];
 
-BloodWolf[_ForgottenCraft0Function_]["setToolDestroyBlockTime_3"] = function(_Forgotten0Craft_){
- _Forgotten1Craft_ = _Forgotten0Craft_*20;
- ForgottenCraft(BloodWolf[_ForgottenCraft6Function_] , "setDestroyTime")(30 , 20/_Forgotten1Craft_);
-}
+var SHOVEL_BLOCKS = [
+  [2, 0.9], [3, 0.75], [12, 0.75], [13, 0.9],
+  [78, 0.5], [80, 1], [82, 0.9], [88, 0.75],
+  [110, 0.9], [198, 0.9], [243, 0.9]
+];
+
+var SHEAR_BLOCKS = [
+  [30, 20]
+];
+
+API.setToolDestroyTime_Pickaxe = function (speed) {
+  setBlockDestroyTimes(PICKAXE_BLOCKS, speed * 20);
+};
+
+API.setToolDestroyTime_Axe = function (speed) {
+  setBlockDestroyTimes(AXE_BLOCKS, speed);
+};
+
+API.setToolDestroyTime_Shovel = function (speed) {
+  setBlockDestroyTimes(SHOVEL_BLOCKS, speed);
+};
+
+API.setToolDestroyTime_Shears = function (speed) {
+  setBlockDestroyTimes(SHEAR_BLOCKS, speed * 20);
+};
 
 BloodWolf[_ForgottenCraft0Function_]["MineBeProduced1"] = function(ID , 特殊�?, veinCount , maxHeight , replaceBlock){
  veinSize = 0;veinSize ++;
@@ -763,16 +712,16 @@ startDestroyBlock = function(x , y , z , side){
  当前手持物品�?= ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getSelectedSlotId")();
  enchantments = ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getEnchantments")(当前手持物品�?; 
  if(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() == CustomTools[0][currentItemId]){
-  ForgottenCraft(BloodWolf[_ForgottenCraft0Function_] , "setToolDestroyBlockTime_0")(6.0);
+  API.setToolDestroyTime_Pickaxe(6.0);
  }
  if(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() == CustomTools[1][currentItemId]){
-  ForgottenCraft(BloodWolf[_ForgottenCraft0Function_] , "setToolDestroyBlockTime_1")(6.0);
+  API.setToolDestroyTime_Axe(6.0);
  }
  if(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() == CustomTools[2][currentItemId]){
-  ForgottenCraft(BloodWolf[_ForgottenCraft0Function_] , "setToolDestroyBlockTime_2")(6.0);
+  API.setToolDestroyTime_Shovel(6.0);
  }
  if(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() == CustomTools[3][currentItemId]){
-  ForgottenCraft(BloodWolf[_ForgottenCraft0Function_] , "setToolDestroyBlockTime_3")(6.0);
+  API.setToolDestroyTime_Shears(6.0);
  }
 }
 
@@ -789,16 +738,16 @@ modTick = function(){
  当前手持物品�?= ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getSelectedSlotId")();
  enchantments = ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getEnchantments")(当前手持物品�?;
  if(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() !== CustomTools[0][currentItemId]){
-  ForgottenCraft(BloodWolf[_ForgottenCraft0Function_] , "setToolDestroyBlockTime_0")(1.0);
+  API.setToolDestroyTime_Pickaxe(1.0);
  }
  if(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() !== CustomTools[1][currentItemId]){
-  ForgottenCraft(BloodWolf[_ForgottenCraft0Function_] , "setToolDestroyBlockTime_1")(1.0);
+  API.setToolDestroyTime_Axe(1.0);
  }
  if(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() !== CustomTools[2][currentItemId]){
-  ForgottenCraft(BloodWolf[_ForgottenCraft0Function_] , "setToolDestroyBlockTime_2")(1.0);
+  API.setToolDestroyTime_Shovel(1.0);
  }
  if(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() !== CustomTools[3][currentItemId]){
-  ForgottenCraft(BloodWolf[_ForgottenCraft0Function_] , "setToolDestroyBlockTime_3")(1.0);
+  API.setToolDestroyTime_Shears(1.0);
  }
  if(tempToolId){
   //if(ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() == VanillaToolIDs[0][0] || ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() == VanillaToolIDs[0][1] || ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() == VanillaToolIDs[0][2] || ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() == VanillaToolIDs[0][3] || ForgottenCraft(BloodWolf[_ForgottenCraft3Function_] , "getCarriedItem")() == VanillaToolIDs[0][4]){
