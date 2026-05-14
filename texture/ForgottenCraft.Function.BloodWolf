@@ -275,278 +275,72 @@ API.setToolDestroyTime_Shears = function (speed) {
   setBlockDestroyTimes(SHEAR_BLOCKS, speed * 20);
 };
 
-BloodWolf[_ForgottenCraft0Function_]["MineBeProduced1"] = function(ID , 特殊�?, veinCount , maxHeight , replaceBlock){
- veinSize = 0;veinSize ++;
- veinType = Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]())// + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]());
- x = getPlayerX() + Math["random"]() * 256
- y = Math["random"]() * maxHeight
- z = getPlayerZ() + Math["random"]() * 256
- if(Level["getTile"](x , y , z) == replaceBlock){
-  if(veinSize <= veinCount){
-   Level["setTile"](x , y , z , ID , 特殊�?;
-   if(veinType == 0){
-    Level["setTile"](x + 1 , y , z , ID , 特殊�?;
-    Level["setTile"](x , y , z + 1 , ID , 特殊�?;
-    Level["setTile"](x + 1 , y , z + 1 , ID , 特殊�?;
-    Level["setTile"](x , y + 1 , z , ID , 特殊�?;
-    Level["setTile"](x + 1 , y - 1 , z + 1 , ID , 特殊�?;
-   }
-   if(veinType == 1){
-    Level["setTile"](x - 1 , y , z , ID , 特殊�?;
-    Level["setTile"](x , y , z - 1 , ID , 特殊�?;
-    Level["setTile"](x - 1 , y , z - 1 , ID , 特殊�?;
-    Level["setTile"](x , y - 1 , z , ID , 特殊�?;
-    Level["setTile"](x - 1 , y - 1 , z , ID , 特殊�?;
-    Level["setTile"](x , y - 1 , z - 1 , ID , 特殊�?;
-    Level["setTile"](x - 1 , y - 1 , z - 1 , ID , 特殊�?;
-   }
-   if(veinType == 2){
-    Level["setTile"](x , y - 1 , z , ID , 特殊�?;
-    Level["setTile"](x + 1 , y - 1 , z , ID , 特殊�?;
-    Level["setTile"](x , y - 1 , z + 1 , ID , 特殊�?;
-   }
-   if(veinType == 3){
-    Level["setTile"](x + 1 , y , z , ID , 特殊�?;
-    Level["setTile"](x , y - 1 , z , ID , 特殊�?;
-   }
-   if(veinType == 4){
-    Level["setTile"](x - 1 , y , z , ID , 特殊�?;
-    Level["setTile"](x , y , z - 1 , ID , 特殊�?;
-    Level["setTile"](x , y - 1 , z , ID , 特殊�?;
-    Level["setTile"](x - 1 , y - 1 , z , ID , 特殊�?;
-    Level["setTile"](x , y - 1 , z - 1 , ID , 特殊�?;
-    Level["setTile"](x - 1 , y - 1 , z - 1 , ID , 特殊�?;
-   }
-   if(veinType == 5){
-   }
-   if(veinType == 6){
-   }
-   if(veinType == 7){
-   }
-   if(veinType == 8){
-   }
-   if(veinType == 9){
-   }
-   if(veinType == 10){
-   }
+// ========================= 矿石生成 =========================
+
+var VEIN_SHAPES = [
+  [[1,0,0],[0,0,1],[1,0,1],[0,1,0],[1,-1,1]],
+  [[-1,0,0],[0,0,-1],[-1,0,-1],[0,-1,0],[-1,-1,0],[0,-1,-1],[-1,-1,-1]],
+  [[0,-1,0],[1,-1,0],[0,-1,1]],
+  [[1,0,0],[0,-1,0]],
+  [[-1,0,0],[0,0,-1],[0,-1,0],[-1,-1,0],[0,-1,-1],[-1,-1,-1]]
+];
+
+function generateOreDirection(blockId, blockData, veinCount, maxHeight, replaceBlock, dirX, dirZ) {
+  var veinSize = 0;
+  veinSize++;
+  var veinType = 0;
+  for (var r = 0; r < 6; r++) { veinType += Math.round(Math.random()); }
+  var x = getPlayerX() + dirX * Math.random() * 256;
+  var y = Math.random() * maxHeight;
+  var z = getPlayerZ() + dirZ * Math.random() * 256;
+  if (Level.getTile(x, y, z) !== replaceBlock) return;
+  if (veinSize > veinCount) { veinSize = 0; return; }
+  Level.setTile(x, y, z, blockId, blockData);
+  if (veinType >= 0 && veinType < VEIN_SHAPES.length) {
+    var shape = VEIN_SHAPES[veinType];
+    for (var s = 0; s < shape.length; s++) {
+      Level.setTile(x + shape[s][0], y + shape[s][1], z + shape[s][2], blockId, blockData);
+    }
   }
-  else if(veinSize > veinCount){veinSize = 0}
- }
-}
-BloodWolf[_ForgottenCraft0Function_]["MineBeProduced2"] = function(ID , 特殊�?, veinCount , maxHeight , replaceBlock){
- veinSize = 0;veinSize ++;
- veinType = Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]())// + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]());
- x = getPlayerX() + Math["random"]() * 256
- y = Math["random"]() * maxHeight
- z = getPlayerZ() - Math["random"]() * 256
- if(Level["getTile"](x , y , z) == replaceBlock){
-  if(veinSize <= veinCount){
-   Level["setTile"](x , y , z , ID , 特殊�?;
-   if(veinType == 0){
-    Level["setTile"](x + 1 , y , z , ID , 特殊�?;
-    Level["setTile"](x , y , z + 1 , ID , 特殊�?;
-    Level["setTile"](x + 1 , y , z + 1 , ID , 特殊�?;
-    Level["setTile"](x , y + 1 , z , ID , 特殊�?;
-    Level["setTile"](x + 1 , y - 1 , z + 1 , ID , 特殊�?;
-   }
-   if(veinType == 1){
-    Level["setTile"](x - 1 , y , z , ID , 特殊�?;
-    Level["setTile"](x , y , z - 1 , ID , 特殊�?;
-    Level["setTile"](x - 1 , y , z - 1 , ID , 特殊�?;
-    Level["setTile"](x , y - 1 , z , ID , 特殊�?;
-    Level["setTile"](x - 1 , y - 1 , z , ID , 特殊�?;
-    Level["setTile"](x , y - 1 , z - 1 , ID , 特殊�?;
-    Level["setTile"](x - 1 , y - 1 , z - 1 , ID , 特殊�?;
-   }
-   if(veinType == 2){
-    Level["setTile"](x , y - 1 , z , ID , 特殊�?;
-    Level["setTile"](x + 1 , y - 1 , z , ID , 特殊�?;
-    Level["setTile"](x , y - 1 , z + 1 , ID , 特殊�?;
-   }
-   if(veinType == 3){
-    Level["setTile"](x + 1 , y , z , ID , 特殊�?;
-    Level["setTile"](x , y - 1 , z , ID , 特殊�?;
-   }
-   if(veinType == 4){
-    Level["setTile"](x - 1 , y , z , ID , 特殊�?;
-    Level["setTile"](x , y , z - 1 , ID , 特殊�?;
-    Level["setTile"](x , y - 1 , z , ID , 特殊�?;
-    Level["setTile"](x - 1 , y - 1 , z , ID , 特殊�?;
-    Level["setTile"](x , y - 1 , z - 1 , ID , 特殊�?;
-    Level["setTile"](x - 1 , y - 1 , z - 1 , ID , 特殊�?;
-   }
-   if(veinType == 5){
-   }
-   if(veinType == 6){
-   }
-   if(veinType == 7){
-   }
-   if(veinType == 8){
-   }
-   if(veinType == 9){
-   }
-   if(veinType == 10){
-   }
-  }
-  else if(veinSize > veinCount){veinSize = 0}
- }
-}
-BloodWolf[_ForgottenCraft0Function_]["MineBeProduced3"] = function(ID , 特殊�?, veinCount , maxHeight , replaceBlock){
- veinSize = 0;veinSize ++;
- veinType = Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]())// + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]());
- x = getPlayerX() - Math["random"]() * 256
- y = Math["random"]() * maxHeight
- z = getPlayerZ() + Math["random"]() * 256
- if(Level["getTile"](x , y , z) == replaceBlock){
-  if(veinSize <= veinCount){
-   Level["setTile"](x , y , z , ID , 特殊�?;
-   if(veinType == 0){
-    Level["setTile"](x + 1 , y , z , ID , 特殊�?;
-    Level["setTile"](x , y , z + 1 , ID , 特殊�?;
-    Level["setTile"](x + 1 , y , z + 1 , ID , 特殊�?;
-    Level["setTile"](x , y + 1 , z , ID , 特殊�?;
-    Level["setTile"](x + 1 , y - 1 , z + 1 , ID , 特殊�?;
-   }
-   if(veinType == 1){
-    Level["setTile"](x - 1 , y , z , ID , 特殊�?;
-    Level["setTile"](x , y , z - 1 , ID , 特殊�?;
-    Level["setTile"](x - 1 , y , z - 1 , ID , 特殊�?;
-    Level["setTile"](x , y - 1 , z , ID , 特殊�?;
-    Level["setTile"](x - 1 , y - 1 , z , ID , 特殊�?;
-    Level["setTile"](x , y - 1 , z - 1 , ID , 特殊�?;
-    Level["setTile"](x - 1 , y - 1 , z - 1 , ID , 特殊�?;
-   }
-   if(veinType == 2){
-    Level["setTile"](x , y - 1 , z , ID , 特殊�?;
-    Level["setTile"](x + 1 , y - 1 , z , ID , 特殊�?;
-    Level["setTile"](x , y - 1 , z + 1 , ID , 特殊�?;
-   }
-   if(veinType == 3){
-    Level["setTile"](x + 1 , y , z , ID , 特殊�?;
-    Level["setTile"](x , y - 1 , z , ID , 特殊�?;
-   }
-   if(veinType == 4){
-    Level["setTile"](x - 1 , y , z , ID , 特殊�?;
-    Level["setTile"](x , y , z - 1 , ID , 特殊�?;
-    Level["setTile"](x , y - 1 , z , ID , 特殊�?;
-    Level["setTile"](x - 1 , y - 1 , z , ID , 特殊�?;
-    Level["setTile"](x , y - 1 , z - 1 , ID , 特殊�?;
-    Level["setTile"](x - 1 , y - 1 , z - 1 , ID , 特殊�?;
-   }
-   if(veinType == 5){
-   }
-   if(veinType == 6){
-   }
-   if(veinType == 7){
-   }
-   if(veinType == 8){
-   }
-   if(veinType == 9){
-   }
-   if(veinType == 10){
-   }
-  }
-  else if(veinSize > veinCount){veinSize = 0}
- }
-}
-BloodWolf[_ForgottenCraft0Function_]["MineBeProduced4"] = function(ID , 特殊�?, veinCount , maxHeight , replaceBlock){
- veinSize = 0;veinSize ++;
- veinType = Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]())// + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]()) + Math["round"](Math["random"]());
- x = getPlayerX() - Math["random"]() * 256
- y = Math["random"]() * maxHeight
- z = getPlayerZ() - Math["random"]() * 256
- if(Level["getTile"](x , y , z) == replaceBlock){
-  if(veinSize <= veinCount){
-   Level["setTile"](x , y , z , ID , 特殊�?;
-   if(veinType == 0){
-    Level["setTile"](x + 1 , y , z , ID , 特殊�?;
-    Level["setTile"](x , y , z + 1 , ID , 特殊�?;
-    Level["setTile"](x + 1 , y , z + 1 , ID , 特殊�?;
-    Level["setTile"](x , y + 1 , z , ID , 特殊�?;
-    Level["setTile"](x + 1 , y - 1 , z + 1 , ID , 特殊�?;
-   }
-   if(veinType == 1){
-    Level["setTile"](x - 1 , y , z , ID , 特殊�?;
-    Level["setTile"](x , y , z - 1 , ID , 特殊�?;
-    Level["setTile"](x - 1 , y , z - 1 , ID , 特殊�?;
-    Level["setTile"](x , y - 1 , z , ID , 特殊�?;
-    Level["setTile"](x - 1 , y - 1 , z , ID , 特殊�?;
-    Level["setTile"](x , y - 1 , z - 1 , ID , 特殊�?;
-    Level["setTile"](x - 1 , y - 1 , z - 1 , ID , 特殊�?;
-   }
-   if(veinType == 2){
-    Level["setTile"](x , y - 1 , z , ID , 特殊�?;
-    Level["setTile"](x + 1 , y - 1 , z , ID , 特殊�?;
-    Level["setTile"](x , y - 1 , z + 1 , ID , 特殊�?;
-   }
-   if(veinType == 3){
-    Level["setTile"](x + 1 , y , z , ID , 特殊�?;
-    Level["setTile"](x , y - 1 , z , ID , 特殊�?;
-   }
-   if(veinType == 4){
-    Level["setTile"](x - 1 , y , z , ID , 特殊�?;
-    Level["setTile"](x , y , z - 1 , ID , 特殊�?;
-    Level["setTile"](x , y - 1 , z , ID , 特殊�?;
-    Level["setTile"](x - 1 , y - 1 , z , ID , 特殊�?;
-    Level["setTile"](x , y - 1 , z - 1 , ID , 特殊�?;
-    Level["setTile"](x - 1 , y - 1 , z - 1 , ID , 特殊�?;
-   }
-   if(veinType == 5){
-   }
-   if(veinType == 6){
-   }
-   if(veinType == 7){
-   }
-   if(veinType == 8){
-   }
-   if(veinType == 9){
-   }
-   if(veinType == 10){
-   }
-  }
-  else if(veinSize > veinCount){veinSize = 0}
- }
 }
 
-BloodWolf[_ForgottenCraft0Function_]["MineBeProduced"] = function(ID , 特殊�?, veinCount , maxHeight , replaceBlock){
- BloodWolf[_ForgottenCraft0Function_]["MineBeProduced1"](ID , 特殊�?, veinCount , maxHeight , replaceBlock);
- BloodWolf[_ForgottenCraft0Function_]["MineBeProduced2"](ID , 特殊�?, veinCount , maxHeight , replaceBlock);
- BloodWolf[_ForgottenCraft0Function_]["MineBeProduced3"](ID , 特殊�?, veinCount , maxHeight , replaceBlock);
- BloodWolf[_ForgottenCraft0Function_]["MineBeProduced4"](ID , 特殊�?, veinCount , maxHeight , replaceBlock);
-}
+API.generateOre = function (blockId, blockData, veinCount, maxHeight, replaceBlock) {
+  generateOreDirection(blockId, blockData, veinCount, maxHeight, replaceBlock,  1,  1);
+  generateOreDirection(blockId, blockData, veinCount, maxHeight, replaceBlock,  1, -1);
+  generateOreDirection(blockId, blockData, veinCount, maxHeight, replaceBlock, -1,  1);
+  generateOreDirection(blockId, blockData, veinCount, maxHeight, replaceBlock, -1, -1);
+};
 
-BloodWolf[_ForgottenCraft0Function_]["saveData"] = function(_Forgotten0Craft_ , _Forgotten1Craft_){
- try{
-  var _Forgotten2Craft_ = new java["io"]["File"](/*android["os"]["Environment"]["getExternalStorageDirectory"]()["getAbsolutePath"]() +*/ _Forgotten0Craft_);
-  _Forgotten2Craft_["getParentFile"]()["mkdirs"]();
-  _Forgotten2Craft_["createNewFile"]();
-  var _Forgotten3Craft_ = new java["io"]["FileWriter"](_Forgotten2Craft_);
-  _Forgotten3Craft_["write"](_Forgotten1Craft_);
-  _Forgotten3Craft_["close"]();
- }
- catch(e){
-  print("写入:" + e);
- }
-}
-//保存("/sdcard/   ","");
+API.MineBeProduced = API.generateOre;
 
-BloodWolf[_ForgottenCraft0Function_]["readData"] = function(_Forgotten0Craft_ , _Forgotten1Craft_){
- var _Forgotten2Craft_ = new java["io"]["File"](_Forgotten0Craft_);
- if(_Forgotten2Craft_["exists"]()){
-  if(_Forgotten2Craft_["isFile"]()){
-   var _Forgotten3Craft_ = "";
-   var _Forgotten4Craft_ = new java["io"]["InputStreamReader"](new java["io"]["FileInputStream"](_Forgotten2Craft_) , _Forgotten1Craft_);
-   var _Forgotten5Craft_ = new java["io"]["BufferedReader"](_Forgotten4Craft_);
-   var _Forgotten6Craft_ = null;
-   while((_Forgotten6Craft_ = _Forgotten5Craft_["readLine"]()) != null){
-    _Forgotten3Craft_ += _Forgotten6Craft_ /*+ "\n"*/;
-   }
-   _Forgotten4Craft_["close"]();
-   return _Forgotten3Craft_;
+// ========================= 文件读写 =========================
+
+API.saveData = function (path, content) {
+  try {
+    var file = new java.io.File(path);
+    file.getParentFile().mkdirs();
+    file.createNewFile();
+    var writer = new java.io.FileWriter(file);
+    writer.write(content);
+    writer.close();
+  } catch (e) {
+    print("[ForgottenCraft] 写入失败: " + e);
   }
- }
-}
-//BloodWolf[_ForgottenCraft0Function_]["readData"]("/sdcard/   ");
+};
+
+API.readData = function (path, encoding) {
+  var file = new java.io.File(path);
+  if (!file.exists() || !file.isFile()) return null;
+  var result = "";
+  var reader = new java.io.InputStreamReader(new java.io.FileInputStream(file), encoding);
+  var buffer = new java.io.BufferedReader(reader);
+  var line;
+  while ((line = buffer.readLine()) !== null) {
+    result += line;
+  }
+  reader.close();
+  return result;
+};
 
 //function
 /*can use preventDefault()*/
